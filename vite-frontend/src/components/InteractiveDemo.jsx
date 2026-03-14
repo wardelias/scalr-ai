@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../utils/LanguageContext';
 import { Link } from 'react-router-dom';
+import useScrollReveal from '../utils/useScrollReveal';
 
 const demoData = {
     dental: {
@@ -64,22 +65,23 @@ const demoData = {
 };
 
 export default function InteractiveDemo() {
-    const { t, currentLang } = useLanguage();
+    const { t } = useLanguage();
     const [activeTab, setActiveTab] = useState('dental');
     const [isPlaying, setIsPlaying] = useState(false);
+    const [waveHeights, setWaveHeights] = useState(new Array(20).fill(3));
+    const revealRef = useScrollReveal();
 
     useEffect(() => {
-        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-    }, [currentLang]);
+        let interval;
+        if (isPlaying) {
+            interval = setInterval(() => {
+                setWaveHeights(prev => prev.map(() => Math.random() * 30 + 10));
+            }, 100);
+        } else {
+            setWaveHeights(new Array(20).fill(3));
+        }
+        return () => clearInterval(interval);
+    }, [isPlaying]);
 
     const handlePlay = () => setIsPlaying(!isPlaying);
 
@@ -87,7 +89,7 @@ export default function InteractiveDemo() {
     const isEnglish = data.phoneLang === 'English';
 
     return (
-        <section className="demo-section" id="demo">
+        <section className="demo-section" id="demo" ref={revealRef}>
             <div className="container">
                 <div className="section-header text-center fade-up">
                     <span className="section-label">{t('demo_label')}</span>
@@ -143,11 +145,11 @@ export default function InteractiveDemo() {
                                         <div className="player-timer">{data.duration}</div>
                                     </div>
                                     <div className="waveform-container player-waveform">
-                                        {[...Array(20)].map((_, i) => (
+                                        {waveHeights.map((height, i) => (
                                             <div 
                                               key={i} 
                                               className="bar" 
-                                              style={{ height: isPlaying ? `${Math.random() * 30 + 10}px` : '3px' }}
+                                              style={{ height: `${height}px` }}
                                             />
                                         ))}
                                     </div>

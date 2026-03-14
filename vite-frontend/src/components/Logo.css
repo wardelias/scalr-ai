@@ -1,121 +1,49 @@
-/* ── Digital Logo ─────────────────────────────────────────── */
-.digital-logo {
+/* ── Logo ─────────────────────────────────────────── */
+.logo-mark {
   display: inline-flex;
   align-items: baseline;
-  gap: 3px;
-  position: relative;
-  cursor: pointer;
-  user-select: none;
+  gap: 2px;
+  text-decoration: none;
+  animation: logoFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-.digital-logo-text {
+.logo-text {
   font-family: 'IBM Plex Mono', 'Courier New', monospace;
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 700;
   letter-spacing: -0.02em;
   color: #0a0a0a;
-  position: relative;
-  /* Subtle scanline hover effect */
-  transition: color 0.2s ease;
 }
 
-/* ── Glitch effect ────────────────────────────────────────── */
-.digital-logo.glitch .digital-logo-text {
-  animation: glitchText 0.3s steps(2, end);
-}
-
-.digital-logo.glitch::before,
-.digital-logo.glitch::after {
-  content: attr(data-text);
-  font-family: 'IBM Plex Mono', 'Courier New', monospace;
-  font-size: 28px;
-  font-weight: 700;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.digital-logo.glitch::before {
-  color: #00e5ff;
-  clip-path: polygon(0 20%, 100% 20%, 100% 40%, 0 40%);
-  animation: glitchSliceTop 0.3s steps(2, end);
-}
-
-.digital-logo.glitch::after {
-  color: #ff2d55;
-  clip-path: polygon(0 60%, 100% 60%, 100% 80%, 0 80%);
-  animation: glitchSliceBot 0.3s steps(2, end);
-}
-
-@keyframes glitchText {
-  0%   { transform: translate(0); }
-  25%  { transform: translate(-2px, 1px); }
-  50%  { transform: translate(2px, -1px); }
-  75%  { transform: translate(-1px, 0); }
-  100% { transform: translate(0); }
-}
-
-@keyframes glitchSliceTop {
-  0%   { transform: translate(-3px, 0); opacity: 0.8; }
-  50%  { transform: translate(3px, 0);  opacity: 0.6; }
-  100% { transform: translate(0, 0);    opacity: 0; }
-}
-
-@keyframes glitchSliceBot {
-  0%   { transform: translate(3px, 0);  opacity: 0.8; }
-  50%  { transform: translate(-3px, 0); opacity: 0.6; }
-  100% { transform: translate(0, 0);    opacity: 0; }
-}
-
-/* ── Cyan dot ─────────────────────────────────────────────── */
-.digital-logo-dot {
-  width: 8px;
-  height: 8px;
+/* Cyan dot before the name */
+.logo-dot-prefix {
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background: #00c8d7;
-  margin-bottom: 2px;
   flex-shrink: 0;
-  opacity: 0;
-  transform: scale(0);
-  transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  box-shadow: 0 0 0 0 rgba(0, 200, 215, 0.5);
+  position: relative;
+  top: -1px;
+  animation: dotAppear 0.5s 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }
 
-.digital-logo-dot.visible {
-  opacity: 1;
-  transform: scale(1);
-  animation: dotPulse 2.8s infinite ease-in-out 0.4s;
+/* Gentle glow pulse on the dot — subtle, not distracting */
+@keyframes dotAppear {
+  from { opacity: 0; transform: scale(0); }
+  to   { opacity: 1; transform: scale(1); }
 }
 
-@keyframes dotPulse {
-  0%,100% { box-shadow: 0 0 0 0 rgba(0, 200, 215, 0.5); }
-  50%      { box-shadow: 0 0 0 6px rgba(0, 200, 215, 0);  }
+@keyframes logoFadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ── Hover: faint scanline sweep ──────────────────────────── */
-.digital-logo:hover .digital-logo-text {
+/* Subtle hover: lift slightly */
+.logo-mark:hover .logo-text {
   color: #000;
 }
 
-.digital-logo:hover::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    transparent 0%,
-    rgba(0, 200, 215, 0.06) 50%,
-    transparent 100%
-  );
-  background-size: 100% 6px;
-  animation: scanlines 1s linear infinite;
-  pointer-events: none;
-  border-radius: 2px;
-}
-
-@keyframes scanlines {
-  from { background-position: 0 0; }
-  to   { background-position: 0 100%; }
+.logo-mark:hover .logo-dot-prefix {
+  box-shadow: 0 0 6px rgba(0, 200, 215, 0.45);
+  transition: box-shadow 0.3s ease;
 }

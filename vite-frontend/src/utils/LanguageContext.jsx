@@ -9,21 +9,9 @@ export const LanguageProvider = ({ children }) => {
   const [currentLang, setCurrentLang] = useState('en');
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  useEffect(() => {
-    const savedLang = localStorage.getItem('scalr_lang');
-    if (savedLang) {
-      setLanguage(savedLang);
-    } else {
-      setIsModalOpen(true);
-      document.body.classList.add('modal-open');
-    }
-  }, []);
-
-  const setLanguage = (lang) => {
-    setCurrentLang(lang);
-    localStorage.setItem('scalr_lang', lang);
+  // Apply language settings (dir, title, etc)
+  const applyLanguageSettings = (lang) => {
     document.documentElement.lang = lang;
-    
     if (lang === 'he' || lang === 'ar') {
       document.documentElement.dir = 'rtl';
       document.body.classList.add('rtl-mode');
@@ -36,6 +24,25 @@ export const LanguageProvider = ({ children }) => {
     if (trans && trans.meta_title) {
         document.title = trans.meta_title;
     }
+  };
+
+  useEffect(() => {
+    const savedLang = localStorage.getItem('scalr_lang');
+    if (savedLang) {
+      setCurrentLang(savedLang);
+      applyLanguageSettings(savedLang);
+    } else {
+      setIsModalOpen(true);
+      document.body.classList.add('modal-open');
+      // Apply default LTR for the modal itself
+      applyLanguageSettings('en');
+    }
+  }, []);
+
+  const setLanguage = (lang) => {
+    setCurrentLang(lang);
+    localStorage.setItem('scalr_lang', lang);
+    applyLanguageSettings(lang);
   };
 
   const closeModal = () => {

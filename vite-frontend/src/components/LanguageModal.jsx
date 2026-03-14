@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useLanguage } from '../utils/LanguageContext';
 
 export default function LanguageModal() {
-  const { isModalOpen, setIsModalOpen, setLanguage, closeModal } = useLanguage();
+  const { isModalOpen, setLanguage, closeModal } = useLanguage();
 
   if (!isModalOpen) return null;
 
@@ -24,7 +24,7 @@ export default function LanguageModal() {
             <span style={{ fontSize: '24px', marginBottom: '4px' }}>🇺🇸</span>
             English (Main)
           </button>
-          
+
           <div className="lang-secondary">
             <button className="btn-secondary lang-btn" onClick={() => handleSelect('he')}>
               <span style={{ marginRight: '8px' }}>🇮🇱</span> עברית

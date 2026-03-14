@@ -1,26 +1,14 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useLanguage } from '../utils/LanguageContext';
 import InteractiveDemo from '../components/InteractiveDemo';
+import useScrollReveal from '../utils/useScrollReveal';
 
 export default function Solutions() {
-  const { t, currentLang } = useLanguage();
-
-  useEffect(() => {
-    const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-  }, [currentLang]);
+  const { t } = useLanguage();
+  const revealRef = useScrollReveal();
 
   return (
-    <>
+    <div ref={revealRef}>
       <section className="pain-points" style={{ paddingTop: '180px' }}>
         <div className="container">
           <div className="section-header fade-up">
@@ -83,6 +71,6 @@ export default function Solutions() {
         </div>
       </section>
       <InteractiveDemo />
-    </>
+    </div>
   );
 }

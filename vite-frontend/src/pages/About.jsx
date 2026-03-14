@@ -1,30 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useLanguage } from '../utils/LanguageContext';
+import useScrollReveal from '../utils/useScrollReveal';
 
 export default function About() {
-  const { t, currentLang } = useLanguage();
+  const { t } = useLanguage();
   const [activeFaq, setActiveFaq] = useState(null);
-
-  useEffect(() => {
-    const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-  }, [currentLang]);
+  const revealRef = useScrollReveal();
 
   const toggleFaq = (index) => {
     setActiveFaq(activeFaq === index ? null : index);
   };
 
   return (
-    <>
+    <div ref={revealRef}>
       <section className="how-it-works" id="about" style={{ paddingTop: '180px' }}>
         <div className="container">
           <div className="section-header text-center fade-up">
@@ -47,14 +35,14 @@ export default function About() {
               </div>
             </div>
             <div className="timeline-item fade-up stagger-3">
-              <div className="timeline-marker">5</div>
+              <div className="timeline-marker">3</div>
               <div className="timeline-content glass-panel">
                 <h3>{t('hiw_3_h')}</h3>
                 <p>{t('hiw_3_p')}</p>
               </div>
             </div>
             <div className="timeline-item fade-up stagger-4">
-              <div className="timeline-marker">7</div>
+              <div className="timeline-marker">4</div>
               <div className="timeline-content glass-panel completed">
                 <h3>{t('hiw_4_h')}</h3>
                 <p>{t('hiw_4_p')}</p>
@@ -85,6 +73,6 @@ export default function About() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }
