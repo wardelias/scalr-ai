@@ -1,33 +1,71 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>scalr.ai | AI Agents That Speak Hebrew & Arabic. Natively.</title>
-    <meta name="description" content="AI voice agents and WhatsApp bots that respond, qualify, and book appointments in Hebrew and Arabic.">
+    <title data-i18n="meta_title">scalr.ai | AI Agents That Speak Hebrew & Arabic. Natively.</title>
+    <meta name="description"
+        content="AI voice agents and WhatsApp bots that respond, qualify, and book appointments in Hebrew and Arabic.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+    <!-- Language Selection Modal -->
+    <div id="lang-modal" class="lang-modal-overlay">
+        <div class="lang-modal glass-panel">
+            <h2 style="margin-bottom: 8px;">Select Your Language</h2>
+            <p style="color: var(--color-text-secondary); margin-bottom: 24px; font-size: 15px;">Choose your preferred
+                viewing language.</p>
+
+            <div class="lang-buttons">
+                <button class="btn-primary lang-btn-main" data-lang="en">
+                    <span style="font-size: 24px; margin-bottom: 4px;">🇺🇸</span>
+                    English (Main)
+                </button>
+                <div class="lang-secondary">
+                    <button class="btn-secondary lang-btn" data-lang="he">
+                        <span style="margin-right: 8px;">🇮🇱</span> עברית
+                    </button>
+                    <button class="btn-secondary lang-btn" data-lang="ar">
+                        <span style="margin-right: 8px;">🇦🇪</span> العربية
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Navbar -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="#" class="logo">
-                <span class="logo-text">scalr<span class="logo-accent">.ai</span></span>
-                <span class="logo-dot"></span>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Scalr_logo.svg/512px-Scalr_logo.svg.png"
+                    alt="scalr.ai" style="height: 36px;">
             </a>
-            
+
             <div class="nav-links">
-                <a href="#solutions">Solutions</a>
-                <a href="#use-cases">Use Cases</a>
-                <a href="#pricing">Pricing</a>
-                <a href="#about">About</a>
+                <a href="#solutions" data-i18n="nav_solutions">Solutions</a>
+                <a href="#use-cases" data-i18n="nav_use_cases">Use Cases</a>
+                <a href="#pricing" data-i18n="nav_pricing">Pricing</a>
+                <a href="#about" data-i18n="nav_about">About</a>
+
+                <!-- Navbar lang switcher -->
+                <div class="nav-lang-switcher">
+                    <select id="nav-lang-select" class="nav-lang-select">
+                        <option value="en">EN</option>
+                        <option value="he">HE</option>
+                        <option value="ar">AR</option>
+                    </select>
+                </div>
             </div>
-            
-            <a href="#book-demo" class="btn-primary nav-cta">Book a Demo</a>
-            
+
+            <a href="#book-demo" class="btn-primary nav-cta" data-i18n="nav_book">Book a Demo</a>
+
             <button class="mobile-menu-btn" aria-label="Menu">
                 <span></span>
                 <span></span>
@@ -42,34 +80,48 @@
             <div class="container hero-content">
                 <div class="badge fade-up">
                     <span class="pulse-dot"></span>
-                    Now Live — Hebrew & Arabic Voice Agents
+                    <span data-i18n="hero_badge">Now Live — Hebrew & Arabic Voice Agents</span>
                 </div>
-                
-                <h1 class="fade-up stagger-1">AI Agents That Speak Hebrew & Arabic. <span class="gradient-text">Natively.</span></h1>
-                
-                <p class="subtitle fade-up stagger-2">Voice agents that answer calls, WhatsApp bots that qualify leads, and smart booking systems — operating 24/7 in your customers' language. Built for Israeli businesses.</p>
-                
+
+                <h1 class="fade-up stagger-1"><span data-i18n="hero_h1_1">AI Agents That Speak Hebrew & Arabic.</span>
+                    <span class="gradient-text" data-i18n="hero_h1_2">Natively.</span></h1>
+
+                <p class="subtitle fade-up stagger-2" data-i18n="hero_sub">Voice agents that answer calls, WhatsApp bots
+                    that qualify leads, and smart booking systems — operating 24/7 in your customers' language. Built
+                    for Israeli businesses.</p>
+
                 <div class="cta-group fade-up stagger-3">
-                    <a href="#book-demo" class="btn-primary btn-large">Book a Demo</a>
-                    <a href="#demo" class="btn-secondary btn-large">Hear a Live Demo <span class="icon">▶</span></a>
+                    <a href="#book-demo" class="btn-primary btn-large" data-i18n="hero_cta_1">Book a Demo</a>
+                    <a href="#demo" class="btn-secondary btn-large"><span data-i18n="hero_cta_2">Hear a Live Demo</span>
+                        <span class="icon" style="display:inline-block;" data-i18n="hero_cta_icon">▶</span></a>
                 </div>
-                
+
                 <div class="hero-visual fade-up stagger-4">
                     <div class="glass-panel hero-panel">
                         <div class="mockup-header">
                             <div class="mockup-dots"><span></span><span></span><span></span></div>
-                            <div class="mockup-title">Calling Clinic...</div>
+                            <div class="mockup-title" data-i18n="hero_calling">Calling Clinic...</div>
                         </div>
                         <div class="mockup-body">
                             <div class="waveform-container">
-                                <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
-                                <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
-                                <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
                             </div>
                             <p class="mockup-text" dir="rtl">"שלום, תודה שהתקשרת לקליניקה. איך אוכל לעזור?"</p>
                         </div>
                         <div class="mockup-footer">
-                            <span class="status-label"><span class="pulse-dot"></span> AI Voice Agent · Hebrew · Live</span>
+                            <span class="status-label"><span class="pulse-dot"></span> <span data-i18n="hero_status">AI
+                                    Voice Agent · Hebrew · Live</span></span>
                         </div>
                     </div>
                     <div class="hero-glow"></div>
@@ -81,30 +133,30 @@
         <section class="pain-points" id="problem">
             <div class="container">
                 <div class="section-header fade-up">
-                    <span class="section-label">THE PROBLEM</span>
-                    <h2>Israeli Businesses Lose Thousands in Leads Every Month</h2>
+                    <span class="section-label" data-i18n="prob_label">THE PROBLEM</span>
+                    <h2 data-i18n="prob_h2">Israeli Businesses Lose Thousands in Leads Every Month</h2>
                 </div>
-                
+
                 <div class="stats-grid">
                     <div class="stat-card glass-panel fade-up stagger-1">
                         <div class="stat-icon">⏱</div>
                         <div class="stat-number">78%</div>
-                        <p>of leads go cold when you don't respond within 5 minutes</p>
+                        <p data-i18n="prob_1">of leads go cold when you don't respond within 5 minutes</p>
                     </div>
                     <div class="stat-card glass-panel fade-up stagger-2">
                         <div class="stat-icon">📵</div>
-                        <div class="stat-number">₪0</div>
-                        <p>revenue from missed WhatsApp messages during peak hours</p>
+                        <div class="stat-number" data-i18n="prob_2_num">₪0</div>
+                        <p data-i18n="prob_2">revenue from missed WhatsApp messages during peak hours</p>
                     </div>
                     <div class="stat-card glass-panel fade-up stagger-3">
                         <div class="stat-icon">🔄</div>
-                        <div class="stat-number">3+ hrs/day</div>
-                        <p>wasted on manual follow-up that still drops leads</p>
+                        <div class="stat-number" data-i18n="prob_3_num">3+ hrs/day</div>
+                        <p data-i18n="prob_3">wasted on manual follow-up that still drops leads</p>
                     </div>
                     <div class="stat-card glass-panel fade-up stagger-4">
                         <div class="stat-icon">🌙</div>
-                        <div class="stat-number">24/7</div>
-                        <p>your customers expect availability — including Shabbat and holidays</p>
+                        <div class="stat-number" data-i18n="prob_4_num">24/7</div>
+                        <p data-i18n="prob_4">your customers expect availability — including Shabbat and holidays</p>
                     </div>
                 </div>
             </div>
@@ -114,28 +166,33 @@
         <section class="solution" id="solutions">
             <div class="container">
                 <div class="section-header text-center fade-up">
-                    <span class="section-label">THE SOLUTION</span>
-                    <h2>AI That Responds, Qualifies, and Books — In Hebrew & Arabic</h2>
-                    <p class="section-subtitle">Not a generic chatbot. A conversational AI system that understands context, speaks naturally in Hebrew and Arabic, and turns ad traffic into booked appointments — all through WhatsApp and phone.</p>
+                    <span class="section-label" data-i18n="sol_label">THE SOLUTION</span>
+                    <h2 data-i18n="sol_h2">AI That Responds, Qualifies, and Books — In Hebrew & Arabic</h2>
+                    <p class="section-subtitle" data-i18n="sol_sub">Not a generic chatbot. A conversational AI system
+                        that understands context, speaks naturally in Hebrew and Arabic, and turns ad traffic into
+                        booked appointments — all through WhatsApp and phone.</p>
                 </div>
-                
+
                 <div class="flow-diagram">
                     <div class="flow-step glass-panel fade-up stagger-1">
                         <div class="step-icon">💬</div>
-                        <h3>1. Lead Comes In</h3>
-                        <p>From Meta ads, Google, or your website — every lead gets an instant response on WhatsApp or phone within seconds.</p>
+                        <h3 data-i18n="sol_s1_h">1. Lead Comes In</h3>
+                        <p data-i18n="sol_s1_p">From Meta ads, Google, or your website — every lead gets an instant
+                            response on WhatsApp or phone within seconds.</p>
                     </div>
                     <div class="flow-connector fade-up stagger-2"></div>
                     <div class="flow-step glass-panel fade-up stagger-3">
                         <div class="step-icon">🧠 <span class="floating-text" dir="rtl">שלום</span></div>
-                        <h3>2. AI Qualifies locally</h3>
-                        <p>The AI conducts a natural conversation, asks qualifying questions, scores the lead, and filters out tire-kickers.</p>
+                        <h3 data-i18n="sol_s2_h">2. AI Qualifies locally</h3>
+                        <p data-i18n="sol_s2_p">The AI conducts a natural conversation, asks qualifying questions,
+                            scores the lead, and filters out tire-kickers.</p>
                     </div>
                     <div class="flow-connector fade-up stagger-4"></div>
                     <div class="flow-step glass-panel fade-up stagger-5">
                         <div class="step-icon">📅</div>
-                        <h3>3. Appointment Booked</h3>
-                        <p>Hot leads are routed directly to your calendar. You show up, close the deal. That's it.</p>
+                        <h3 data-i18n="sol_s3_h">3. Appointment Booked</h3>
+                        <p data-i18n="sol_s3_p">Hot leads are routed directly to your calendar. You show up, close the
+                            deal. That's it.</p>
                     </div>
                 </div>
             </div>
@@ -145,51 +202,71 @@
         <section class="demo-section" id="demo">
             <div class="container">
                 <div class="section-header text-center fade-up">
-                    <span class="section-label">HEAR IT IN ACTION</span>
-                    <h2>Test Our AI Agents Across Industries</h2>
-                    <p class="section-subtitle">Select a use case to see how our AI handles real conversations in Hebrew and Arabic.</p>
+                    <span class="section-label" data-i18n="demo_label">HEAR IT IN ACTION</span>
+                    <h2 data-i18n="demo_h2">Test Our AI Agents Across Industries</h2>
+                    <p class="section-subtitle" data-i18n="demo_sub">Select a use case to see how our AI handles real
+                        conversations in Hebrew and Arabic.</p>
                 </div>
-                
+
                 <div class="demo-tabs fade-up stagger-1">
-                    <button class="tab-btn active" data-target="dental">🏥 Dental Clinic</button>
-                    <button class="tab-btn" data-target="beauty">💇 Beauty Salon</button>
-                    <button class="tab-btn" data-target="realestate">🏠 Real Estate</button>
-                    <button class="tab-btn" data-target="medical">✈️ Medical Tourism</button>
+                    <button class="tab-btn active" data-target="dental" data-i18n="demo_t1">🏥 Dental Clinic</button>
+                    <button class="tab-btn" data-target="beauty" data-i18n="demo_t2">💇 Beauty Salon</button>
+                    <button class="tab-btn" data-target="realestate" data-i18n="demo_t3">🏠 Real Estate</button>
+                    <button class="tab-btn" data-target="medical" data-i18n="demo_t4">✈️ Medical Tourism</button>
                 </div>
-                
+
                 <div class="demo-container glass-panel fade-up stagger-2">
                     <div class="demo-columns">
                         <!-- WhatsApp Mockup -->
                         <div class="demo-column whatsapp-mockup">
-                            <h3 class="column-title">WhatsApp Conversation</h3>
+                            <h3 class="column-title" data-i18n="demo_col1">WhatsApp Conversation</h3>
                             <div class="whatsapp-container" id="whatsapp-content">
                                 <!-- Content injected via JS -->
                             </div>
                         </div>
-                        
+
                         <!-- Phone Mockup -->
                         <div class="demo-column phone-mockup">
-                            <h3 class="column-title">Phone Call</h3>
+                            <h3 class="column-title" data-i18n="demo_col2">Phone Call</h3>
                             <div class="phone-container">
                                 <div class="audio-player glass-panel-inner">
                                     <div class="player-header">
                                         <div class="player-icon">📞</div>
                                         <div class="player-info">
-                                            <div class="player-title">AI Voice Agent</div>
+                                            <div class="player-title" data-i18n="demo_ai_voice">AI Voice Agent</div>
                                             <div class="player-lang" id="phone-lang">Hebrew</div>
                                         </div>
                                         <div class="player-timer">0:34</div>
                                     </div>
                                     <div class="waveform-container player-waveform">
-                                        <!-- Bars generated via JS or CSS -->
-                                        <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+                                        <!-- Bars generated via CSS -->
+                                        <div class="bar"></div>
+                                        <div class="bar"></div>
+                                        <div class="bar"></div>
+                                        <div class="bar"></div>
+                                        <div class="bar"></div>
+                                        <div class="bar"></div>
+                                        <div class="bar"></div>
+                                        <div class="bar"></div>
+                                        <div class="bar"></div>
+                                        <div class="bar"></div>
+                                        <div class="bar"></div>
+                                        <div class="bar"></div>
+                                        <div class="bar"></div>
+                                        <div class="bar"></div>
+                                        <div class="bar"></div>
+                                        <div class="bar"></div>
+                                        <div class="bar"></div>
+                                        <div class="bar"></div>
+                                        <div class="bar"></div>
+                                        <div class="bar"></div>
                                     </div>
                                     <button class="play-btn" id="play-demo-btn">
                                         <span class="play-icon">▶</span>
                                     </button>
                                 </div>
                                 <div class="transcript-container glass-panel-inner">
-                                    <p class="transcript-caption">Live Transcript</p>
+                                    <p class="transcript-caption" data-i18n="demo_live_trans">Live Transcript</p>
                                     <p class="transcript-text" id="phone-transcript" dir="rtl">
                                         <!-- Content injected via JS -->
                                     </p>
@@ -198,9 +275,10 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="demo-cta text-center fade-up stagger-3">
-                    <a href="#book-demo" class="inline-link">Want to hear your business? <span>→</span></a>
+                    <a href="#book-demo" class="inline-link"><span data-i18n="demo_cta">Want to hear your
+                            business?</span> <span style="display:inline-block;" data-i18n="demo_dir_arrow">→</span></a>
                 </div>
             </div>
         </section>
@@ -210,20 +288,20 @@
             <div class="container container-wide">
                 <div class="banner-grid">
                     <div class="banner-item fade-up stagger-1">
-                        <div class="banner-number">&lt; 5 sec</div>
-                        <div class="banner-text">Average response time</div>
+                        <div class="banner-number" data-i18n="stat_1_num">&lt; 5 sec</div>
+                        <div class="banner-text" data-i18n="stat_1_text">Average response time</div>
                     </div>
                     <div class="banner-item fade-up stagger-2">
-                        <div class="banner-number">40%</div>
-                        <div class="banner-text">Reduction in no-shows</div>
+                        <div class="banner-number" data-i18n="stat_2_num">40%</div>
+                        <div class="banner-text" data-i18n="stat_2_text">Reduction in no-shows</div>
                     </div>
                     <div class="banner-item fade-up stagger-3">
-                        <div class="banner-number">24/7/365</div>
-                        <div class="banner-text">Including Shabbat & holidays</div>
+                        <div class="banner-number" data-i18n="stat_3_num">24/7/365</div>
+                        <div class="banner-text" data-i18n="stat_3_text">Including Shabbat & holidays</div>
                     </div>
                     <div class="banner-item fade-up stagger-4">
-                        <div class="banner-number">3 langs</div>
-                        <div class="banner-text">Hebrew · Arabic · English</div>
+                        <div class="banner-number" data-i18n="stat_4_num">3 langs</div>
+                        <div class="banner-text" data-i18n="stat_4_text">Hebrew · Arabic · English</div>
                     </div>
                 </div>
             </div>
@@ -233,46 +311,58 @@
         <section class="use-cases" id="use-cases">
             <div class="container">
                 <div class="section-header text-center fade-up">
-                    <span class="section-label">WHO IT'S FOR</span>
-                    <h2>Built for Every Israeli Business</h2>
+                    <span class="section-label" data-i18n="cases_label">WHO IT'S FOR</span>
+                    <h2 data-i18n="cases_h2">Built for Every Israeli Business</h2>
                 </div>
-                
+
                 <div class="cases-grid">
                     <div class="case-card glass-panel fade-up stagger-1">
                         <div class="case-icon">🩺</div>
-                        <h3>Medical Clinics</h3>
-                        <p>AI receptionist that triages patients, books appointments, and sends reminders in Hebrew.</p>
-                        <a href="#book-demo" class="learn-more">Learn more →</a>
+                        <h3 data-i18n="c1_h">Medical Clinics</h3>
+                        <p data-i18n="c1_p">AI receptionist that triages patients, books appointments, and sends
+                            reminders in Hebrew.</p>
+                        <a href="#book-demo" class="learn-more"><span data-i18n="learn_more">Learn more</span> <span
+                                data-i18n="demo_dir_arrow">→</span></a>
                     </div>
                     <div class="case-card glass-panel fade-up stagger-2">
                         <div class="case-icon">✨</div>
-                        <h3>Beauty & Wellness</h3>
-                        <p>Automated booking and follow-ups for salons, spas, and aesthetic clinics.</p>
-                        <a href="#book-demo" class="learn-more">Learn more →</a>
+                        <h3 data-i18n="c2_h">Beauty & Wellness</h3>
+                        <p data-i18n="c2_p">Automated booking and follow-ups for salons, spas, and aesthetic clinics.
+                        </p>
+                        <a href="#book-demo" class="learn-more"><span data-i18n="learn_more">Learn more</span> <span
+                                data-i18n="demo_dir_arrow">→</span></a>
                     </div>
                     <div class="case-card glass-panel fade-up stagger-3">
                         <div class="case-icon">🏢</div>
-                        <h3>Real Estate</h3>
-                        <p>Qualify buyer intent, budget, and preferences before you spend time on a showing.</p>
-                        <a href="#book-demo" class="learn-more">Learn more →</a>
+                        <h3 data-i18n="c3_h">Real Estate</h3>
+                        <p data-i18n="c3_p">Qualify buyer intent, budget, and preferences before you spend time on a
+                            showing.</p>
+                        <a href="#book-demo" class="learn-more"><span data-i18n="learn_more">Learn more</span> <span
+                                data-i18n="demo_dir_arrow">→</span></a>
                     </div>
                     <div class="case-card glass-panel fade-up stagger-4">
                         <div class="case-icon">🌍</div>
-                        <h3>Medical Tourism</h3>
-                        <p>Multi-language intake for international patients. Hebrew, Arabic, English, Russian.</p>
-                        <a href="#book-demo" class="learn-more">Learn more →</a>
+                        <h3 data-i18n="c4_h">Medical Tourism</h3>
+                        <p data-i18n="c4_p">Multi-language intake for international patients. Hebrew, Arabic, English,
+                            Russian.</p>
+                        <a href="#book-demo" class="learn-more"><span data-i18n="learn_more">Learn more</span> <span
+                                data-i18n="demo_dir_arrow">→</span></a>
                     </div>
                     <div class="case-card glass-panel fade-up stagger-5">
                         <div class="case-icon">⚖️</div>
-                        <h3>Law Offices</h3>
-                        <p>Screen potential clients, collect case details, and schedule consultations automatically.</p>
-                        <a href="#book-demo" class="learn-more">Learn more →</a>
+                        <h3 data-i18n="c5_h">Law Offices</h3>
+                        <p data-i18n="c5_p">Screen potential clients, collect case details, and schedule consultations
+                            automatically.</p>
+                        <a href="#book-demo" class="learn-more"><span data-i18n="learn_more">Learn more</span> <span
+                                data-i18n="demo_dir_arrow">→</span></a>
                     </div>
                     <div class="case-card glass-panel fade-up stagger-6">
                         <div class="case-icon">🚗</div>
-                        <h3>Auto Dealerships</h3>
-                        <p>Capture test drive requests, qualify financing eligibility, and book visits.</p>
-                        <a href="#book-demo" class="learn-more">Learn more →</a>
+                        <h3 data-i18n="c6_h">Auto Dealerships</h3>
+                        <p data-i18n="c6_p">Capture test drive requests, qualify financing eligibility, and book visits.
+                        </p>
+                        <a href="#book-demo" class="learn-more"><span data-i18n="learn_more">Learn more</span> <span
+                                data-i18n="demo_dir_arrow">→</span></a>
                     </div>
                 </div>
             </div>
@@ -282,95 +372,114 @@
         <section class="pricing" id="pricing">
             <div class="container">
                 <div class="section-header text-center fade-up">
-                    <span class="section-label">PACKAGES</span>
-                    <h2>Simple, Transparent Pricing</h2>
-                    <p class="section-subtitle">All packages include Hebrew & Arabic support, WhatsApp integration, and our CRM platform.</p>
+                    <span class="section-label" data-i18n="price_label">PACKAGES</span>
+                    <h2 data-i18n="price_h2">Simple, Transparent Pricing</h2>
+                    <p class="section-subtitle" data-i18n="price_sub">All packages include Hebrew & Arabic support,
+                        WhatsApp integration, and our CRM platform.</p>
                 </div>
-                
+
                 <div class="pricing-grid">
                     <!-- Starter -->
                     <div class="pricing-card glass-panel fade-up stagger-1">
                         <div class="pricing-header">
-                            <h3>Starter</h3>
-                            <p class="pricing-desc">Get Found, Get Booked</p>
+                            <h3 data-i18n="p1_h">Starter</h3>
+                            <p class="pricing-desc" data-i18n="p1_sub">Get Found, Get Booked</p>
                             <div class="price">
                                 <span class="currency">₪</span>
                                 <span class="amount">1,200</span>
-                                <span class="period">/mo</span>
+                                <span class="period" data-i18n="p_mo">/mo</span>
                             </div>
-                            <p class="setup-fee">+ ₪800 setup</p>
+                            <p class="setup-fee" data-i18n="p1_setup">+ ₪800 setup</p>
                         </div>
                         <ul class="features-list">
-                            <li><span class="check">✓</span> WhatsApp Business integration</li>
-                            <li><span class="check">✓</span> Smart auto-responder (Heb/Ar)</li>
-                            <li><span class="check">✓</span> Online booking calendar</li>
-                            <li><span class="check">✓</span> Appointment reminders (reduce no-shows 40%)</li>
-                            <li><span class="check">✓</span> Basic CRM dashboard</li>
-                            <li><span class="check">✓</span> Google Reviews automation</li>
-                            <li><span class="check">✓</span> Monthly performance report</li>
+                            <li><span class="check">✓</span> <span data-i18n="p1_f1">WhatsApp Business
+                                    integration</span></li>
+                            <li><span class="check">✓</span> <span data-i18n="p1_f2">Smart auto-responder
+                                    (Heb/Ar)</span></li>
+                            <li><span class="check">✓</span> <span data-i18n="p1_f3">Online booking calendar</span></li>
+                            <li><span class="check">✓</span> <span data-i18n="p1_f4">Appointment reminders (reduce
+                                    no-shows 40%)</span></li>
+                            <li><span class="check">✓</span> <span data-i18n="p1_f5">Basic CRM dashboard</span></li>
+                            <li><span class="check">✓</span> <span data-i18n="p1_f6">Google Reviews automation</span>
+                            </li>
+                            <li><span class="check">✓</span> <span data-i18n="p1_f7">Monthly performance report</span>
+                            </li>
                         </ul>
                         <div class="pricing-footer">
-                            <a href="#book-demo" class="btn-secondary btn-block">Get Started</a>
+                            <a href="#book-demo" class="btn-secondary btn-block" data-i18n="p_get">Get Started</a>
                         </div>
                     </div>
-                    
+
                     <!-- Growth -->
                     <div class="pricing-card glass-panel recommended fade-up stagger-2">
-                        <div class="recommended-badge">Most Popular</div>
+                        <div class="recommended-badge" data-i18n="p_popular">Most Popular</div>
                         <div class="pricing-header">
-                            <h3>Growth</h3>
-                            <p class="pricing-desc">AI That Sells For You</p>
+                            <h3 data-i18n="p2_h">Growth</h3>
+                            <p class="pricing-desc" data-i18n="p2_sub">AI That Sells For You</p>
                             <div class="price">
                                 <span class="currency">₪</span>
                                 <span class="amount">2,500</span>
-                                <span class="period">/mo</span>
+                                <span class="period" data-i18n="p_mo">/mo</span>
                             </div>
-                            <p class="setup-fee">+ ₪1,500 setup</p>
+                            <p class="setup-fee" data-i18n="p2_setup">+ ₪1,500 setup</p>
                         </div>
                         <ul class="features-list">
-                            <li><span class="check">✓</span> <strong>Everything in Starter, plus:</strong></li>
-                            <li><span class="check">✓</span> AI lead qualification (scores 0-100)</li>
-                            <li><span class="check">✓</span> Automated nurture sequences</li>
-                            <li><span class="check">✓</span> Landing page / funnel (Hebrew)</li>
-                            <li><span class="check">✓</span> Visual pipeline management</li>
-                            <li><span class="check">✓</span> Multi-channel inbox (WA/FB/IG)</li>
-                            <li><span class="check">✓</span> Missed call text-back</li>
-                            <li><span class="check">✓</span> Weekly analytics report</li>
+                            <li><span class="check">✓</span> <strong data-i18n="p2_f1">Everything in Starter,
+                                    plus:</strong></li>
+                            <li><span class="check">✓</span> <span data-i18n="p2_f2">AI lead qualification (scores
+                                    0-100)</span></li>
+                            <li><span class="check">✓</span> <span data-i18n="p2_f3">Automated nurture sequences</span>
+                            </li>
+                            <li><span class="check">✓</span> <span data-i18n="p2_f4">Landing page / funnel
+                                    (Hebrew)</span></li>
+                            <li><span class="check">✓</span> <span data-i18n="p2_f5">Visual pipeline management</span>
+                            </li>
+                            <li><span class="check">✓</span> <span data-i18n="p2_f6">Multi-channel inbox
+                                    (WA/FB/IG)</span></li>
+                            <li><span class="check">✓</span> <span data-i18n="p2_f7">Missed call text-back</span></li>
+                            <li><span class="check">✓</span> <span data-i18n="p2_f8">Weekly analytics report</span></li>
                         </ul>
                         <div class="pricing-footer">
-                            <a href="#book-demo" class="btn-primary btn-block">Book a Demo</a>
+                            <a href="#book-demo" class="btn-primary btn-block" data-i18n="hero_cta_1">Book a Demo</a>
                         </div>
                     </div>
-                    
+
                     <!-- Premium -->
                     <div class="pricing-card glass-panel fade-up stagger-3">
                         <div class="pricing-header">
-                            <h3>Premium</h3>
-                            <p class="pricing-desc">Complete AI Business Engine</p>
+                            <h3 data-i18n="p3_h">Premium</h3>
+                            <p class="pricing-desc" data-i18n="p3_sub">Complete AI Business Engine</p>
                             <div class="price">
                                 <span class="currency">₪</span>
                                 <span class="amount">4,500</span>
-                                <span class="period">/mo</span>
+                                <span class="period" data-i18n="p_mo">/mo</span>
                             </div>
-                            <p class="setup-fee">+ ₪3,000 setup</p>
+                            <p class="setup-fee" data-i18n="p3_setup">+ ₪3,000 setup</p>
                         </div>
                         <ul class="features-list">
-                            <li><span class="check">✓</span> <strong>Everything in Growth, plus:</strong></li>
-                            <li><span class="check">✓</span> AI Voice Agent (Hebrew phone calls)</li>
-                            <li><span class="check">✓</span> Multi-language (Heb + Ar + En + Ru)</li>
-                            <li><span class="check">✓</span> Ad campaign management</li>
-                            <li><span class="check">✓</span> Custom automation workflows</li>
-                            <li><span class="check">✓</span> Reputation management</li>
-                            <li><span class="check">✓</span> Dedicated account manager</li>
-                            <li><span class="check">✓</span> Database reactivation campaigns</li>
+                            <li><span class="check">✓</span> <strong data-i18n="p3_f1">Everything in Growth,
+                                    plus:</strong></li>
+                            <li><span class="check">✓</span> <span data-i18n="p3_f2">AI Voice Agent (Hebrew phone
+                                    calls)</span></li>
+                            <li><span class="check">✓</span> <span data-i18n="p3_f3">Multi-language (Heb + Ar + En +
+                                    Ru)</span></li>
+                            <li><span class="check">✓</span> <span data-i18n="p3_f4">Ad campaign management</span></li>
+                            <li><span class="check">✓</span> <span data-i18n="p3_f5">Custom automation workflows</span>
+                            </li>
+                            <li><span class="check">✓</span> <span data-i18n="p3_f6">Reputation management</span></li>
+                            <li><span class="check">✓</span> <span data-i18n="p3_f7">Dedicated account manager</span>
+                            </li>
+                            <li><span class="check">✓</span> <span data-i18n="p3_f8">Database reactivation
+                                    campaigns</span></li>
                         </ul>
                         <div class="pricing-footer">
-                            <a href="#book-demo" class="btn-secondary btn-block">Contact Sales</a>
+                            <a href="#book-demo" class="btn-secondary btn-block" data-i18n="p_contact">Contact Sales</a>
                         </div>
                     </div>
                 </div>
-                
-                <p class="pricing-disclaimer text-center fade-up stagger-4">All prices in NIS. Ad spend billed separately by platform. Custom enterprise packages available.</p>
+
+                <p class="pricing-disclaimer text-center fade-up stagger-4" data-i18n="p_disc">All prices in NIS. Ad
+                    spend billed separately by platform. Custom enterprise packages available.</p>
             </div>
         </section>
 
@@ -378,36 +487,40 @@
         <section class="how-it-works" id="about">
             <div class="container">
                 <div class="section-header text-center fade-up">
-                    <h2>Live in 7 Days. Not 7 Months.</h2>
+                    <h2 data-i18n="hiw_h2">Live in 7 Days. Not 7 Months.</h2>
                 </div>
-                
+
                 <div class="timeline">
                     <div class="timeline-item fade-up stagger-1">
                         <div class="timeline-marker">1</div>
                         <div class="timeline-content glass-panel">
-                            <h3>Day 1 — Discovery Call</h3>
-                            <p>We learn your business, map your sales process, and define your ideal customer profile.</p>
+                            <h3 data-i18n="hiw_1_h">Day 1 — Discovery Call</h3>
+                            <p data-i18n="hiw_1_p">We learn your business, map your sales process, and define your ideal
+                                customer profile.</p>
                         </div>
                     </div>
                     <div class="timeline-item fade-up stagger-2">
                         <div class="timeline-marker">2</div>
                         <div class="timeline-content glass-panel">
-                            <h3>Days 2-4 — Build</h3>
-                            <p>We configure your AI agents, build your WhatsApp flows, create landing pages, and write Hebrew/Arabic prompts.</p>
+                            <h3 data-i18n="hiw_2_h">Days 2-4 — Build</h3>
+                            <p data-i18n="hiw_2_p">We configure your AI agents, build your WhatsApp flows, create
+                                landing pages, and write Hebrew/Arabic prompts.</p>
                         </div>
                     </div>
                     <div class="timeline-item fade-up stagger-3">
                         <div class="timeline-marker">5</div>
                         <div class="timeline-content glass-panel">
-                            <h3>Days 5-6 — Test</h3>
-                            <p>We run test conversations, fine-tune the AI responses, and connect everything to your calendar.</p>
+                            <h3 data-i18n="hiw_3_h">Days 5-6 — Test</h3>
+                            <p data-i18n="hiw_3_p">We run test conversations, fine-tune the AI responses, and connect
+                                everything to your calendar.</p>
                         </div>
                     </div>
                     <div class="timeline-item fade-up stagger-4">
                         <div class="timeline-marker">7</div>
                         <div class="timeline-content glass-panel completed">
-                            <h3>Day 7 — Launch</h3>
-                            <p>Go live. Every lead gets answered instantly. You focus on closing.</p>
+                            <h3 data-i18n="hiw_4_h">Day 7 — Launch</h3>
+                            <p data-i18n="hiw_4_p">Go live. Every lead gets answered instantly. You focus on closing.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -418,62 +531,70 @@
         <section class="faq">
             <div class="container container-small">
                 <div class="section-header text-center fade-up">
-                    <h2>Got Questions?</h2>
+                    <h2 data-i18n="faq_h2">Got Questions?</h2>
                 </div>
-                
+
                 <div class="faq-container fade-up stagger-1">
                     <div class="faq-item glass-panel">
                         <button class="faq-question">
-                            Does the AI really speak natural Hebrew?
+                            <span data-i18n="faq_1_q">Does the AI really speak natural Hebrew?</span>
                             <span class="faq-icon">+</span>
                         </button>
                         <div class="faq-answer">
-                            <p>Yes. Our agents are specifically trained for Israeli Hebrew — including slang, abbreviations, and the way people actually message on WhatsApp. Not robotic, not translated from English.</p>
+                            <p data-i18n="faq_1_a">Yes. Our agents are specifically trained for Israeli Hebrew —
+                                including slang, abbreviations, and the way people actually message on WhatsApp. Not
+                                robotic, not translated from English.</p>
                         </div>
                     </div>
                     <div class="faq-item glass-panel">
                         <button class="faq-question">
-                            What about Arabic?
+                            <span data-i18n="faq_2_q">What about Arabic?</span>
                             <span class="faq-icon">+</span>
                         </button>
                         <div class="faq-answer">
-                            <p>We support both Palestinian/Israeli Arabic and Modern Standard Arabic, depending on your audience.</p>
+                            <p data-i18n="faq_2_a">We support both Palestinian/Israeli Arabic and Modern Standard
+                                Arabic, depending on your audience.</p>
                         </div>
                     </div>
                     <div class="faq-item glass-panel">
                         <button class="faq-question">
-                            Do I need to change my phone number?
+                            <span data-i18n="faq_3_q">Do I need to change my phone number?</span>
                             <span class="faq-icon">+</span>
                         </button>
                         <div class="faq-answer">
-                            <p>No. We integrate with your existing WhatsApp Business number and phone lines.</p>
+                            <p data-i18n="faq_3_a">No. We integrate with your existing WhatsApp Business number and
+                                phone lines.</p>
                         </div>
                     </div>
                     <div class="faq-item glass-panel">
                         <button class="faq-question">
-                            How is this different from a regular chatbot?
+                            <span data-i18n="faq_4_q">How is this different from a regular chatbot?</span>
                             <span class="faq-icon">+</span>
                         </button>
                         <div class="faq-answer">
-                            <p>Regular chatbots follow rigid menus. Our AI understands free-form conversations, asks dynamic follow-up questions, and makes real qualification decisions — like a trained sales rep.</p>
+                            <p data-i18n="faq_4_a">Regular chatbots follow rigid menus. Our AI understands free-form
+                                conversations, asks dynamic follow-up questions, and makes real qualification decisions
+                                — like a trained sales rep.</p>
                         </div>
                     </div>
                     <div class="faq-item glass-panel">
                         <button class="faq-question">
-                            What if the AI can't handle a question?
+                            <span data-i18n="faq_5_q">What if the AI can't handle a question?</span>
                             <span class="faq-icon">+</span>
                         </button>
                         <div class="faq-answer">
-                            <p>It gracefully hands off to a human. You get a notification with the full conversation history so you can pick up seamlessly.</p>
+                            <p data-i18n="faq_5_a">It gracefully hands off to a human. You get a notification with the
+                                full conversation history so you can pick up seamlessly.</p>
                         </div>
                     </div>
                     <div class="faq-item glass-panel">
                         <button class="faq-question">
-                            Can I see real results before committing?
+                            <span data-i18n="faq_6_q">Can I see real results before committing?</span>
                             <span class="faq-icon">+</span>
                         </button>
                         <div class="faq-answer">
-                            <p>Book a demo and we'll show you a live agent configured for your industry. No obligation.</p>
+                            <p data-i18n="faq_6_a">Book a demo and we'll show you a live agent configured for your
+                                industry. No obligation.</p>
                         </div>
                     </div>
                 </div>
@@ -483,12 +604,16 @@
         <!-- Section 10: Final CTA -->
         <section class="final-cta" id="book-demo">
             <div class="container text-center fade-up">
-                <h2>Stop Losing Leads. Start Closing.</h2>
-                <p class="section-subtitle">Book a 15-minute demo and see exactly how AI agents will work for your business.</p>
-                
+                <h2 data-i18n="cta_h2">Stop Losing Leads. Start Closing.</h2>
+                <p class="section-subtitle" data-i18n="cta_sub">Book a 15-minute demo and see exactly how AI agents will
+                    work for your business.</p>
+
                 <div class="cta-form glass-panel">
-                    <a href="#" class="btn-primary btn-large btn-block" onclick="alert('Calendly/Cal.com embed placeholder')">Book Your Demo →</a>
-                    <div class="cta-alt">or WhatsApp us directly at <a href="#" class="accent-text" dir="ltr">+972-50-000-0000</a></div>
+                    <a href="#" class="btn-primary btn-large btn-block"
+                        onclick="alert('Calendly/Cal.com embed placeholder')"><span data-i18n="btn_book_your">Book Your
+                            Demo</span> <span data-i18n="demo_dir_arrow">→</span></a>
+                    <div class="cta-alt"><span data-i18n="cta_al">or WhatsApp us directly at</span> <a href="#"
+                            class="accent-text" dir="ltr">+972-50-000-0000</a></div>
                 </div>
             </div>
         </section>
@@ -499,13 +624,13 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-copyright">
-                    <p>&copy; 2026 scalr.ai</p>
+                    <p>&copy; <span data-i18n="f_cpy">2026 scalr.ai</span></p>
                 </div>
                 <div class="footer-links">
-                    <a href="#solutions">Solutions</a>
-                    <a href="#pricing">Pricing</a>
-                    <a href="#about">About</a>
-                    <a href="#book-demo">Contact</a>
+                    <a href="#solutions" data-i18n="nav_solutions">Solutions</a>
+                    <a href="#pricing" data-i18n="nav_pricing">Pricing</a>
+                    <a href="#about" data-i18n="nav_about">About</a>
+                    <a href="#book-demo" data-i18n="f_contact">Contact</a>
                 </div>
                 <div class="footer-social">
                     <a href="#" aria-label="WhatsApp">WA</a>
@@ -514,11 +639,13 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>Built in Israel 🇮🇱 for Israeli businesses</p>
+                <p data-i18n="f_bot">Built in Israel 🇮🇱 for Israeli businesses</p>
             </div>
         </div>
     </footer>
 
+    <script src="translations.js"></script>
     <script src="script.js"></script>
 </body>
+
 </html>

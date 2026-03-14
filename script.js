@@ -1,4 +1,76 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // 0. Language Management
+    let currentLang = 'en';
+    const langModal = document.getElementById('lang-modal');
+    const navLangSelect = document.getElementById('nav-lang-select');
+    
+    // Check local storage for existing preference
+    const savedLang = localStorage.getItem('scalr_lang');
+    if (savedLang) {
+        setLanguage(savedLang);
+        langModal.style.display = 'none';
+        document.body.classList.remove('modal-open');
+    } else {
+        // Show modal by default
+        langModal.style.display = 'flex';
+        document.body.classList.add('modal-open');
+    }
+
+    // Modal buttons
+    document.querySelectorAll('.lang-btn, .lang-btn-main').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const lang = e.currentTarget.dataset.lang;
+            setLanguage(lang);
+            langModal.style.display = 'none';
+            document.body.classList.remove('modal-open');
+            localStorage.setItem('scalr_lang', lang);
+        });
+    });
+
+    // Nav select
+    if (navLangSelect) {
+        navLangSelect.addEventListener('change', (e) => {
+            setLanguage(e.target.value);
+            localStorage.setItem('scalr_lang', e.target.value);
+        });
+    }
+
+    function setLanguage(lang) {
+        currentLang = lang;
+        document.documentElement.lang = lang;
+        
+        // Update direction
+        if (lang === 'he' || lang === 'ar') {
+            document.documentElement.dir = 'rtl';
+            document.body.classList.add('rtl-mode');
+        } else {
+            document.documentElement.dir = 'ltr';
+            document.body.classList.remove('rtl-mode');
+        }
+
+        // Update Nav Select value
+        if (navLangSelect) navLangSelect.value = lang;
+
+        // Apply translations
+        const trans = translations[lang];
+        if (trans) {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.dataset.i18n;
+                if (trans[key]) {
+                    el.innerHTML = trans[key]; // use innerHTML incase there are nested tags, or simple textContent
+                }
+            });
+            // Update placeholders or other attributes if needed
+            document.title = trans.meta_title || document.title;
+        }
+
+        // Re-render demo if needed
+        const activeTab = document.querySelector('.tab-btn.active');
+        if (activeTab) {
+            renderDemo(activeTab.dataset.target);
+        }
+    }
+
     // 1. Scroll Animations (Intersection Observer)
     const observerOptions = {
         root: null,
