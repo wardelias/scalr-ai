@@ -100,7 +100,7 @@ export default function InteractiveDemo() {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    assistantId: '4a5b055b-f463-4f30-ae5f-2c54c20b199f',
+                    assistantId: '8c684b05-641c-4318-a6f6-ab5c5b13e339',
                     phoneNumberId: '49bdf887-40bd-40e1-aea2-c4d30a4a196b',
                     customer: { number: phoneNumber }
                 })
