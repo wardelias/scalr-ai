@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../utils/LanguageContext';
+import Logo from './Logo';
 
 export default function Navbar() {
   const { currentLang, setLanguage, t } = useLanguage();
@@ -22,12 +23,8 @@ export default function Navbar() {
   return (
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`} id="navbar">
       <div className="nav-container">
-        <Link to="/" className="logo">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Scalr_logo.svg/512px-Scalr_logo.svg.png"
-            alt="scalr.ai"
-            style={{ height: '36px' }}
-          />
+        <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+          <Logo />
         </Link>
         
         <div className="nav-links" style={{ display: mobileMenuOpen ? 'flex' : '' }}>
