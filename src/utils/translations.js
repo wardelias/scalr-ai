@@ -146,7 +146,17 @@ export const translations = {
         cta_al: "or WhatsApp us directly at",
         f_cpy: "2026 scalr.ai",
         f_contact: "Contact",
-        f_bot: "Built in Israel 🇮🇱 for Israeli businesses"
+        f_bot: "Built in Israel 🇮🇱 for Israeli businesses",
+
+        demo_live_title: "Try Live Experience",
+        demo_call_me: "Call Me",
+        demo_call_ai: "Call AI",
+        demo_phone_placeholder: "+972...",
+        demo_call_btn: "Start Call",
+        demo_calling: "Connecting...",
+        demo_call_success: "Call initiated! Please check your phone.",
+        demo_call_error: "Error starting call. Please try again.",
+        demo_ai_num: "Call Daniel at: +972-3-3823299"
     },
     he: {
         meta_title: "scalr.ai | סוכני AI שמדברים עברית וערבית. טבעי.",
@@ -295,7 +305,17 @@ export const translations = {
         cta_al: "או שלח לנו בוואטסאפ למספר",
         f_cpy: "2026 scalr.ai",
         f_contact: "צור קשר",
-        f_bot: "נבנה בישראל 🇮🇱 עבור עסקים ישראלים"
+        f_bot: "נבנה בישראל 🇮🇱 עבור עסקים ישראלים",
+
+        demo_live_title: "נסה את החוויה החיה",
+        demo_call_me: "התקשרו אלי",
+        demo_call_ai: "התקשר ל-AI",
+        demo_phone_placeholder: "+972...",
+        demo_call_btn: "התחל שיחה",
+        demo_calling: "מתחבר...",
+        demo_call_success: "השיחה החלה! בדוק את הטלפון שלך.",
+        demo_call_error: "שגיאה בתחילת השיחה. נסה שוב.",
+        demo_ai_num: "התקשר לדניאל: 03-3823299"
     },
     ar: {
         meta_title: "scalr.ai | وكلاء ذكاء اصطناعي يتحدثون العبرية والعربية بطلاقة.",
@@ -444,6 +464,16 @@ export const translations = {
         cta_al: "أو راجعنا بشكل مباشر عبر الواتساب على",
         f_cpy: "2026 scalr.ai",
         f_contact: "اتصل بنا",
-        f_bot: "صُنع في إسرائيل 🇮🇱 للشركات الإسرائيلية"
+        f_bot: "صُنع في إسرائيل 🇮🇱 للشركات الإسرائيلية",
+
+        demo_live_title: "جرب التجربة المباشرة",
+        demo_call_me: "اتصل بي",
+        demo_call_ai: "اتصل بـ AI",
+        demo_phone_placeholder: "+972...",
+        demo_call_btn: "بدء المكالمة",
+        demo_calling: "جاري الاتصال...",
+        demo_call_success: "بدأت المكالمة! يرجى التحقق من هاتفك.",
+        demo_call_error: "خطأ في بدء المكالمة. حاول مرة أخرى.",
+        demo_ai_num: "اتصل بدانيل على: 03-3823299"
     }
 };

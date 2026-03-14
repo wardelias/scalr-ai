@@ -69,6 +69,9 @@ export default function InteractiveDemo() {
     const [activeTab, setActiveTab] = useState('dental');
     const [isPlaying, setIsPlaying] = useState(false);
     const [waveHeights, setWaveHeights] = useState(new Array(20).fill(3));
+    const [demoMode, setDemoMode] = useState('mock'); // 'mock' or 'live'
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const [callStatus, setCallStatus] = useState('idle'); // 'idle', 'loading', 'success', 'error'
     const revealRef = useScrollReveal();
 
     useEffect(() => {
@@ -84,6 +87,37 @@ export default function InteractiveDemo() {
     }, [isPlaying]);
 
     const handlePlay = () => setIsPlaying(!isPlaying);
+
+    const handleCallMe = async (e) => {
+        e.preventDefault();
+        if (!phoneNumber) return;
+        
+        setCallStatus('loading');
+        try {
+            const response = await fetch('https://api.vapi.ai/call', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${import.meta.env.VITE_VAPI_PRIVATE_KEY}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    assistantId: '4a5b055b-f463-4f30-ae5f-2c54c20b199f',
+                    phoneNumberId: '49bdf887-40bd-40e1-aea2-c4d30a4a196b',
+                    customer: { number: phoneNumber }
+                })
+            });
+
+            if (response.ok) {
+                setCallStatus('success');
+                setTimeout(() => setCallStatus('idle'), 5000);
+            } else {
+                setCallStatus('error');
+            }
+        } catch (error) {
+            console.error('Vapi Error:', error);
+            setCallStatus('error');
+        }
+    };
 
     const data = demoData[activeTab];
     const isEnglish = data.phoneLang === 'English';
@@ -133,36 +167,90 @@ export default function InteractiveDemo() {
 
                         {/* Phone Mockup */}
                         <div className="demo-column phone-mockup">
-                            <h3 className="column-title">{t('demo_col2')}</h3>
-                            <div className="phone-container">
-                                <div className="audio-player glass-panel-inner">
-                                    <div className="player-header">
-                                        <div className="player-icon">📞</div>
-                                        <div className="player-info">
-                                            <div className="player-title">{t('demo_ai_voice')}</div>
-                                            <div className="player-lang">{data.phoneLang}</div>
-                                        </div>
-                                        <div className="player-timer">{data.duration}</div>
-                                    </div>
-                                    <div className="waveform-container player-waveform">
-                                        {waveHeights.map((height, i) => (
-                                            <div 
-                                              key={i} 
-                                              className="bar" 
-                                              style={{ height: `${height}px` }}
-                                            />
-                                        ))}
-                                    </div>
-                                    <button className={`play-btn ${isPlaying ? 'playing' : ''}`} onClick={handlePlay}>
-                                        <span className="play-icon">{isPlaying ? '⏸' : '▶'}</span>
+                            <div className="column-header-with-toggle">
+                                <h3 className="column-title">{t('demo_col2')}</h3>
+                                <div className="demo-mode-toggle">
+                                    <button 
+                                        className={`mode-toggle-btn ${demoMode === 'mock' ? 'active' : ''}`}
+                                        onClick={() => setDemoMode('mock')}
+                                    >
+                                        Mock
+                                    </button>
+                                    <button 
+                                        className={`mode-toggle-btn ${demoMode === 'live' ? 'active' : ''}`}
+                                        onClick={() => setDemoMode('live')}
+                                    >
+                                        Live
                                     </button>
                                 </div>
-                                <div className="transcript-container glass-panel-inner">
-                                    <p className="transcript-caption">{t('demo_live_trans')}</p>
-                                    <p className="transcript-text" dir={isEnglish ? 'ltr' : 'rtl'}>
-                                        {data.phoneTranscript}
-                                    </p>
-                                </div>
+                            </div>
+
+                            <div className="phone-container">
+                                {demoMode === 'mock' ? (
+                                    <>
+                                        <div className="audio-player glass-panel-inner">
+                                            <div className="player-header">
+                                                <div className="player-icon">📞</div>
+                                                <div className="player-info">
+                                                    <div className="player-title">{t('demo_ai_voice')}</div>
+                                                    <div className="player-lang">{data.phoneLang}</div>
+                                                </div>
+                                                <div className="player-timer">{data.duration}</div>
+                                            </div>
+                                            <div className="waveform-container player-waveform">
+                                                {waveHeights.map((height, i) => (
+                                                    <div 
+                                                    key={i} 
+                                                    className="bar" 
+                                                    style={{ height: `${height}px` }}
+                                                    />
+                                                ))}
+                                            </div>
+                                            <button className={`play-btn ${isPlaying ? 'playing' : ''}`} onClick={handlePlay}>
+                                                <span className="play-icon">{isPlaying ? '⏸' : '▶'}</span>
+                                            </button>
+                                        </div>
+                                        <div className="transcript-container glass-panel-inner">
+                                            <p className="transcript-caption">{t('demo_live_trans')}</p>
+                                            <p className="transcript-text" dir={isEnglish ? 'ltr' : 'rtl'}>
+                                                {data.phoneTranscript}
+                                            </p>
+                                        </div>
+                                    </>
+                                ) : (
+                                    <div className="live-demo-container glass-panel-inner">
+                                        <h4 className="live-title">{t('demo_live_title')}</h4>
+                                        <div className="live-option">
+                                            <span className="option-label">{t('demo_call_me')}</span>
+                                            <form className="call-me-form" onSubmit={handleCallMe}>
+                                                <input 
+                                                    type="tel" 
+                                                    placeholder={t('demo_phone_placeholder')}
+                                                    value={phoneNumber}
+                                                    onChange={(e) => setPhoneNumber(e.target.value)}
+                                                    className="phone-input"
+                                                    required
+                                                />
+                                                <button 
+                                                    type="submit" 
+                                                    className={`call-btn ${callStatus}`}
+                                                    disabled={callStatus === 'loading'}
+                                                >
+                                                    {callStatus === 'loading' ? t('demo_calling') : t('demo_call_btn')}
+                                                </button>
+                                            </form>
+                                            {callStatus === 'success' && <p className="status-msg success">{t('demo_call_success')}</p>}
+                                            {callStatus === 'error' && <p className="status-msg error">{t('demo_call_error')}</p>}
+                                        </div>
+                                        <div className="divider"><span>OR</span></div>
+                                        <div className="live-option">
+                                            <span className="option-label">{t('demo_call_ai')}</span>
+                                            <div className="ai-phone-number">
+                                                {t('demo_ai_num')}
+                                            </div>
+                                        </div>
+                                    </div>
+                                )}
                             </div>
                         </div>
                     </div>
