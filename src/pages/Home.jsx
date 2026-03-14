@@ -1,16 +1,23 @@
 import React from 'react';
 import { useLanguage } from '../utils/LanguageContext';
-import { Link } from 'react-router-dom';
+// Link import removed for single-page layout
 import useScrollReveal from '../utils/useScrollReveal';
+import InteractiveDemo from '../components/InteractiveDemo';
+import Solutions from './Solutions';
+import UseCases from './UseCases';
+import Pricing from './Pricing';
+import About from './About';
 
 export default function Home() {
   const { t } = useLanguage();
-  const pageRef = useScrollReveal();
+  const heroRef = useScrollReveal();
+  const statsRef = useScrollReveal();
+  const ctaRef = useScrollReveal();
 
   return (
-    <div ref={pageRef}>
+    <div>
       {/* ── Hero ─────────────────────────────────────────── */}
-      <section className="hero" id="home">
+      <section className="hero" id="home" ref={heroRef}>
         <div className="container hero-content">
           <div className="badge fade-up">
             <span className="pulse-dot"></span>
@@ -25,11 +32,11 @@ export default function Home() {
           <p className="subtitle fade-up stagger-2">{t('hero_sub')}</p>
 
           <div className="cta-group fade-up stagger-3">
-            <Link to="/book" className="btn-primary btn-large">{t('hero_cta_1')}</Link>
-            <Link to="/solutions#demo" className="btn-secondary btn-large">
+            <a href="#book" className="btn-primary btn-large">{t('hero_cta_1')}</a>
+            <a href="#demo" className="btn-secondary btn-large">
               <span>{t('hero_cta_2')}</span>
               <span className="icon" style={{ display: 'inline-block' }}>{t('hero_cta_icon')}</span>
-            </Link>
+            </a>
           </div>
 
           <div className="hero-visual fade-up stagger-4">
@@ -61,7 +68,7 @@ export default function Home() {
       </section>
 
       {/* ── Stats Banner ─────────────────────────────────── */}
-      <section className="stats-banner">
+      <section className="stats-banner" ref={statsRef}>
         <div className="container container-wide">
           <div className="banner-grid">
             <div className="banner-item fade-up stagger-1">
@@ -84,90 +91,22 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Problem / Pain Points ────────────────────────── */}
-      <section className="pain-points">
-        <div className="container">
-          <div className="text-center fade-up">
-            <span className="section-label">{t('prob_label')}</span>
-            <h2>{t('prob_h2')}</h2>
-          </div>
-          <div className="stats-grid">
-            <div className="glass-panel stat-card fade-up stagger-1">
-              <div className="stat-icon">⏱️</div>
-              <div className="stat-number">78%</div>
-              <p>{t('prob_1')}</p>
-            </div>
-            <div className="glass-panel stat-card fade-up stagger-2">
-              <div className="stat-icon">💸</div>
-              <div className="stat-number">{t('prob_2_num')}</div>
-              <p>{t('prob_2')}</p>
-            </div>
-            <div className="glass-panel stat-card fade-up stagger-3">
-              <div className="stat-icon">🔄</div>
-              <div className="stat-number">{t('prob_3_num')}</div>
-              <p>{t('prob_3')}</p>
-            </div>
-            <div className="glass-panel stat-card fade-up stagger-4">
-              <div className="stat-icon">📅</div>
-              <div className="stat-number">{t('prob_4_num')}</div>
-              <p>{t('prob_4')}</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Solution Flow ─────────────────────────────────── */}
-      <section className="solution">
-        <div className="container">
-          <div className="text-center fade-up">
-            <span className="section-label">{t('sol_label')}</span>
-            <h2>{t('sol_h2')}</h2>
-            <p className="section-subtitle">{t('sol_sub')}</p>
-          </div>
-          <div className="flow-diagram">
-            <div className="glass-panel flow-step fade-up stagger-1">
-              <div className="step-icon">
-                📱
-                <span className="floating-text">WhatsApp</span>
-              </div>
-              <h3>{t('sol_s1_h')}</h3>
-              <p>{t('sol_s1_p')}</p>
-            </div>
-            <div className="flow-connector"></div>
-            <div className="glass-panel flow-step fade-up stagger-2">
-              <div className="step-icon">
-                🤖
-                <span className="floating-text">AI</span>
-              </div>
-              <h3>{t('sol_s2_h')}</h3>
-              <p>{t('sol_s2_p')}</p>
-            </div>
-            <div className="flow-connector"></div>
-            <div className="glass-panel flow-step fade-up stagger-3">
-              <div className="step-icon">
-                📆
-                <span className="floating-text">✓</span>
-              </div>
-              <h3>{t('sol_s3_h')}</h3>
-              <p>{t('sol_s3_p')}</p>
-            </div>
-          </div>
-          <div className="text-center fade-up" style={{ marginTop: '48px' }}>
-            <Link to="/solutions" className="btn-primary btn-large">{t('nav_solutions')} →</Link>
-          </div>
-        </div>
-      </section>
+      {/* All sections integrated (they have their own revealRefs now) */}
+      <Solutions />
+      <UseCases />
+      <Pricing />
+      <About />
 
       {/* ── Final CTA ────────────────────────────────────── */}
-      <section className="final-cta">
+      <section className="final-cta" id="book" ref={ctaRef}>
         <div className="container text-center fade-up">
           <h2>{t('cta_h2')}</h2>
           <p className="section-subtitle">{t('cta_sub')}</p>
 
           <div className="cta-form glass-panel">
-            <Link to="/book" className="btn-primary btn-large btn-block">
-              <span>{t('btn_book_your')}</span> <span>{t('demo_dir_arrow')}</span>
-            </Link>
+            <a href="#book" className="btn-primary btn-large btn-block">
+              <span>{t('btn_book_your')}</span> <span style={{ display: 'inline-block' }}>{t('demo_dir_arrow')}</span>
+            </a>
             <div className="cta-alt">
               <span>{t('cta_al')}</span>{' '}
               <a href="tel:+972500000000" className="accent-text" dir="ltr">+972-50-000-0000</a>

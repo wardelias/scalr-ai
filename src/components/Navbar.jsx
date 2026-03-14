@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { useLanguage } from '../utils/LanguageContext';
 import Logo from './Logo';
 
@@ -20,18 +19,45 @@ export default function Navbar() {
     setLanguage(e.target.value);
   };
 
+  const scrollToSection = (e, id) => {
+    e.preventDefault();
+    setMobileMenuOpen(false);
+    const element = document.getElementById(id);
+    if (element) {
+      const offset = 80; // height of fixed navbar
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = element.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+      
+      // Update URL without jump
+      window.history.pushState(null, '', `#${id}`);
+    } else if (id === 'home') {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+        window.history.pushState(null, '', '/');
+    }
+  };
+
   return (
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`} id="navbar">
       <div className="nav-container">
-        <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+        <a href="#home" onClick={(e) => scrollToSection(e, 'home')} style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
           <Logo />
-        </Link>
+        </a>
         
         <div className={`nav-links${mobileMenuOpen ? ' open' : ''}`}>
-          <Link to="/solutions" onClick={() => setMobileMenuOpen(false)}>{t('nav_solutions')}</Link>
-          <Link to="/use-cases" onClick={() => setMobileMenuOpen(false)}>{t('nav_use_cases')}</Link>
-          <Link to="/pricing" onClick={() => setMobileMenuOpen(false)}>{t('nav_pricing')}</Link>
-          <Link to="/about" onClick={() => setMobileMenuOpen(false)}>{t('nav_about')}</Link>
+          <a href="#solutions" onClick={(e) => scrollToSection(e, 'solutions')}>{t('nav_solutions')}</a>
+          <a href="#use-cases" onClick={(e) => scrollToSection(e, 'use-cases')}>{t('nav_use_cases')}</a>
+          <a href="#pricing" onClick={(e) => scrollToSection(e, 'pricing')}>{t('nav_pricing')}</a>
+          <a href="#about" onClick={(e) => scrollToSection(e, 'about')}>{t('nav_about')}</a>
 
           {/* Navbar lang switcher */}
           <div className="nav-lang-switcher">
@@ -48,9 +74,9 @@ export default function Navbar() {
           </div>
         </div>
 
-        <Link to="/book" className="btn-primary nav-cta">
+        <a href="#book" onClick={(e) => scrollToSection(e, 'book')} className="btn-primary nav-cta">
           {t('nav_book')}
-        </Link>
+        </a>
 
         <button
           className="mobile-menu-btn"

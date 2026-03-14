@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../utils/LanguageContext';
-import { Link } from 'react-router-dom';
 import useScrollReveal from '../utils/useScrollReveal';
 
 const demoData = {
@@ -257,9 +256,9 @@ export default function InteractiveDemo() {
                 </div>
 
                 <div className="demo-cta text-center fade-up stagger-3">
-                    <Link to="/book" className="inline-link">
+                    <a href="#book" className="inline-link">
                         <span>{t('demo_cta')}</span> <span style={{ display: 'inline-block' }}>{t('demo_dir_arrow')}</span>
-                    </Link>
+                    </a>
                 </div>
             </div>
         </section>

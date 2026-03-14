@@ -12,8 +12,8 @@ export default function About() {
   };
 
   return (
-    <div ref={revealRef}>
-      <section className="how-it-works" id="about" style={{ paddingTop: '180px' }}>
+    <div id="about" ref={revealRef}>
+      <section className="how-it-works">
         <div className="container">
           <div className="section-header text-center fade-up">
             <h2>{t('hiw_h2')}</h2>

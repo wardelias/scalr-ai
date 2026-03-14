@@ -21,28 +21,32 @@ export default function useScrollReveal() {
           }
         });
       },
-      { threshold: 0.05, rootMargin: '0px 0px -20px 0px' }
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
     );
 
     const elements = root.querySelectorAll('.fade-up');
+    
+    // Use an observer for everything
+    elements.forEach(el => observer.observe(el));
 
-    // Force-reveal anything already in the viewport on mount
-    const timer = setTimeout(() => {
-      elements.forEach((el) => {
-        const rect = el.getBoundingClientRect();
-        if (rect.top < window.innerHeight) {
-          el.classList.add('visible');
-        } else {
-          observer.observe(el);
-        }
-      });
-    }, 80);
+    // Force-reveal anything already mostly in view
+    const checkImmediate = () => {
+        elements.forEach((el) => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 50) {
+                el.classList.add('visible');
+                observer.unobserve(el);
+            }
+        });
+    };
+
+    const timer = setTimeout(checkImmediate, 100);
 
     return () => {
       observer.disconnect();
       clearTimeout(timer);
     };
-  });
+  }, []); // Run once on mount
 
   return ref;
 }

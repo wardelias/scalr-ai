@@ -8,8 +8,8 @@ export default function Solutions() {
   const revealRef = useScrollReveal();
 
   return (
-    <div ref={revealRef}>
-      <section className="pain-points" style={{ paddingTop: '180px' }}>
+    <div id="solutions" ref={revealRef}>
+      <section className="pain-points">
         <div className="container">
           <div className="section-header fade-up">
             <span className="section-label">{t('prob_label')}</span>

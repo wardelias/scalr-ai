@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLanguage } from '../utils/LanguageContext';
-import { Link } from 'react-router-dom';
+// Link import removed for single-page layout
 import useScrollReveal from '../utils/useScrollReveal';
 
 export default function Pricing() {
@@ -8,8 +8,8 @@ export default function Pricing() {
   const revealRef = useScrollReveal();
 
   return (
-    <div ref={revealRef}>
-      <section className="pricing" id="pricing" style={{ paddingTop: '180px' }}>
+    <div id="pricing" ref={revealRef}>
+      <section className="pricing">
         <div className="container">
           <div className="section-header text-center fade-up">
             <span className="section-label">{t('price_label')}</span>
@@ -40,7 +40,7 @@ export default function Pricing() {
                 <li><span className="check">✓</span> <span>{t('p1_f7')}</span></li>
               </ul>
               <div className="pricing-footer">
-                <Link to="/book" className="btn-secondary btn-block">{t('p_get')}</Link>
+                <a href="#book" className="btn-secondary btn-block">{t('p_get')}</a>
               </div>
             </div>
 
@@ -68,7 +68,7 @@ export default function Pricing() {
                 <li><span className="check">✓</span> <span>{t('p2_f8')}</span></li>
               </ul>
               <div className="pricing-footer">
-                <Link to="/book" className="btn-primary btn-block">{t('hero_cta_1')}</Link>
+                <a href="#book" className="btn-primary btn-block">{t('hero_cta_1')}</a>
               </div>
             </div>
 
@@ -95,7 +95,7 @@ export default function Pricing() {
                 <li><span className="check">✓</span> <span>{t('p3_f8')}</span></li>
               </ul>
               <div className="pricing-footer">
-                <Link to="/book" className="btn-secondary btn-block">{t('p_contact')}</Link>
+                <a href="#book" className="btn-secondary btn-block">{t('p_contact')}</a>
               </div>
             </div>
           </div>
