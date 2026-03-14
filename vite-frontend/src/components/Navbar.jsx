@@ -27,7 +27,7 @@ export default function Navbar() {
           <Logo />
         </Link>
         
-        <div className="nav-links" style={{ display: mobileMenuOpen ? 'flex' : '' }}>
+        <div className={`nav-links${mobileMenuOpen ? ' open' : ''}`}>
           <Link to="/solutions" onClick={() => setMobileMenuOpen(false)}>{t('nav_solutions')}</Link>
           <Link to="/use-cases" onClick={() => setMobileMenuOpen(false)}>{t('nav_use_cases')}</Link>
           <Link to="/pricing" onClick={() => setMobileMenuOpen(false)}>{t('nav_pricing')}</Link>

@@ -167,6 +167,7 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
@@ -177,6 +178,7 @@ body {
     font-size: 17px;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
+    max-width: 100vw;
 }
 
 /* Base Utility Classes */
@@ -367,6 +369,28 @@ h2 {
     gap: 32px;
 }
 
+/* Mobile nav dropdown */
+@media (max-width: 768px) {
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(255,255,255,0.97);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(0,0,0,0.06);
+        flex-direction: column;
+        padding: 16px 24px 24px;
+        gap: 16px;
+        display: none;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+    .nav-links.open {
+        display: flex;
+    }
+}
+
 .nav-links a {
     text-decoration: none;
     color: var(--color-text-secondary);
@@ -472,6 +496,7 @@ h2 {
 .gradient-text {
     background: linear-gradient(135deg, var(--color-text-primary) 0%, var(--color-text-tertiary) 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -1156,7 +1181,7 @@ h2 {
 }
 
 .pricing-footer {
-    mt-top: auto;
+    margin-top: auto;
 }
 
 .pricing-disclaimer {
@@ -1437,9 +1462,11 @@ h2 {
     
     .banner-grid {
         gap: 40px;
-        /* The following line was an HTML snippet provided in the instruction, which is not valid CSS. */
-        /* <img src="Scalr_Logo.png" alt="scalr.ai" style="height: 36px;">nsform: scale(1); */
-        flex-direction: column; /* Retaining original valid CSS property */
+        flex-direction: column;
+    }
+    
+    .banner-number {
+        font-size: 40px;
     }
     
     .banner-item::after {
@@ -1464,8 +1491,42 @@ h2 {
         gap: 20px;
     }
     
+    .timeline-content {
+        padding: 20px;
+    }
+    
     .footer-content {
         flex-direction: column;
         text-align: center;
+    }
+    
+    .footer-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .demo-container {
+        padding: 16px;
+    }
+    
+    .faq-question {
+        padding: 16px 20px;
+        font-size: 16px;
+    }
+    
+    .faq-answer p {
+        padding: 0 20px 20px;
+    }
+    
+    .cta-form {
+        padding: 24px 20px;
+    }
+    
+    h2 {
+        font-size: 32px;
+    }
+    
+    .section-subtitle {
+        font-size: 16px;
     }
 }
