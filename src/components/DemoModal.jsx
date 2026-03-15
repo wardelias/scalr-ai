@@ -24,7 +24,7 @@ export default function DemoModal() {
     setStatus('submitting');
     
     // GHL Webhook URL provided by user
-    const webhookUrl = 'https://services.leadconnectorhq.com/hooks/5mx08gT5SXJptjzoBMQ9/webhook-trigger/a41d89a7-8a2d-44c9-8b28-e4e0b30e1d4d';
+    const webhookUrl = 'https://services.leadconnectorhq.com/hooks/5mx08gT5SXJptjzoBMQ9/webhook-trigger/36aa89fe-2406-45f1-8418-c7fa4c1203c5';
 
     try {
       const response = await fetch(webhookUrl, {
