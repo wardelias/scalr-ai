@@ -244,9 +244,12 @@ export default function InteractiveDemo() {
                                         <div className="divider"><span>OR</span></div>
                                         <div className="live-option">
                                             <span className="option-label">{t('demo_call_ai')}</span>
-                                            <div className="ai-phone-number">
+                                            <a 
+                                                href="tel:+97233823299" 
+                                                className="ai-phone-number-btn"
+                                            >
                                                 {t('demo_ai_num')}
-                                            </div>
+                                            </a>
                                         </div>
                                     </div>
                                 )}

@@ -156,7 +156,16 @@ export const translations = {
         demo_calling: "Connecting...",
         demo_call_success: "Call initiated! Please check your phone.",
         demo_call_error: "Error starting call. Please try again.",
-        demo_ai_num: "Call Daniel at: +972-3-3823299"
+        demo_ai_num: "Call Daniel at: +972-3-3823299",
+        form_name: "Name",
+        form_email: "Email",
+        form_phone: "Phone Number",
+        form_company: "Company Name",
+        form_submit: "Submit",
+        form_submitting: "Submitting...",
+        form_success_title: "Success!",
+        form_success_desc: "We will be in touch shortly.",
+        form_error_msg: "There was an error submitting your request. Please try again."
     },
     he: {
         meta_title: "scalr.ai | סוכני AI שמדברים עברית וערבית. טבעי.",
@@ -315,7 +324,16 @@ export const translations = {
         demo_calling: "מתחבר...",
         demo_call_success: "השיחה החלה! בדוק את הטלפון שלך.",
         demo_call_error: "שגיאה בתחילת השיחה. נסה שוב.",
-        demo_ai_num: "התקשר לדניאל: 03-3823299"
+        demo_ai_num: "התקשר לדניאל: 03-3823299",
+        form_name: "שם מלא",
+        form_email: "אימייל",
+        form_phone: "מספר טלפון",
+        form_company: "שם החברה",
+        form_submit: "שליחה",
+        form_submitting: "שולח...",
+        form_success_title: "הצלחנו!",
+        form_success_desc: "ניצור קשר בהקדם.",
+        form_error_msg: "אירעה שגיאה בשליחת הבקשה. אנא נסה שוב."
     },
     ar: {
         meta_title: "scalr.ai | وكلاء ذكاء اصطناعي يتحدثون العبرية والعربية بطلاقة.",
@@ -474,6 +492,15 @@ export const translations = {
         demo_calling: "جاري الاتصال...",
         demo_call_success: "بدأت المكالمة! يرجى التحقق من هاتفك.",
         demo_call_error: "خطأ في بدء المكالمة. حاول مرة أخرى.",
-        demo_ai_num: "اتصل بدانيل على: 03-3823299"
+        demo_ai_num: "اتصل بدانيل على: 03-3823299",
+        form_name: "الاسم",
+        form_email: "البريد الإلكتروني",
+        form_phone: "رقم الهاتف",
+        form_company: "اسم الشركة",
+        form_submit: "إرسال",
+        form_submitting: "جاري الإرسال...",
+        form_success_title: "نجاح!",
+        form_success_desc: "سنتواصل معك قريباً.",
+        form_error_msg: "حدث خطأ أثناء إرسال طلبك. يرجى المحاولة مرة أخرى."
     }
 };

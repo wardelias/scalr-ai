@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLanguage } from '../utils/LanguageContext';
+import { useModal } from '../utils/ModalContext';
 // Link import removed for single-page layout
 import useScrollReveal from '../utils/useScrollReveal';
 import InteractiveDemo from '../components/InteractiveDemo';
@@ -10,6 +11,7 @@ import About from './About';
 
 export default function Home() {
   const { t } = useLanguage();
+  const { openDemoModal } = useModal();
   const heroRef = useScrollReveal();
   const statsRef = useScrollReveal();
   const ctaRef = useScrollReveal();
@@ -32,7 +34,7 @@ export default function Home() {
           <p className="subtitle fade-up stagger-2">{t('hero_sub')}</p>
 
           <div className="cta-group fade-up stagger-3">
-            <a href="#book" className="btn-primary btn-large">{t('hero_cta_1')}</a>
+            <a href="#book" onClick={(e) => { e.preventDefault(); openDemoModal(); }} className="btn-primary btn-large">{t('hero_cta_1')}</a>
             <a href="#demo" className="btn-secondary btn-large">
               <span>{t('hero_cta_2')}</span>
               <span className="icon" style={{ display: 'inline-block' }}>{t('hero_cta_icon')}</span>
@@ -104,7 +106,7 @@ export default function Home() {
           <p className="section-subtitle">{t('cta_sub')}</p>
 
           <div className="cta-form glass-panel">
-            <a href="#book" className="btn-primary btn-large btn-block">
+            <a href="#book" onClick={(e) => { e.preventDefault(); openDemoModal(); }} className="btn-primary btn-large btn-block">
               <span>{t('btn_book_your')}</span> <span style={{ display: 'inline-block' }}>{t('demo_dir_arrow')}</span>
             </a>
             <div className="cta-alt">

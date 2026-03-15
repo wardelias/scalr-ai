@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../utils/LanguageContext';
+import { useModal } from '../utils/ModalContext';
 import Logo from './Logo';
 
 export default function Navbar() {
   const { currentLang, setLanguage, t } = useLanguage();
+  const { openDemoModal } = useModal();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -74,7 +76,7 @@ export default function Navbar() {
           </div>
         </div>
 
-        <a href="#book" onClick={(e) => scrollToSection(e, 'book')} className="btn-primary nav-cta">
+        <a href="#book" onClick={(e) => { e.preventDefault(); openDemoModal(); setMobileMenuOpen(false); }} className="btn-primary nav-cta">
           {t('nav_book')}
         </a>
 
