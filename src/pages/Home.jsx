@@ -96,7 +96,7 @@ export default function Home() {
       {/* All sections integrated (they have their own revealRefs now) */}
       <Solutions />
       <UseCases />
-      <Pricing />
+      {/* <Pricing /> */}
       <About />
 
       {/* ── Final CTA ────────────────────────────────────── */}
