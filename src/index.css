@@ -1846,9 +1846,13 @@ h2 {
         display: block;
     }
 
-    /* ─ Problem Stats — 1 column ─ */
+    /* ─ Problem Stats — 1 column on mobile ─ */
     .stats-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
+    }
+
+    .stat-card {
+        width: 100%;
     }
 
     /* Fix slider height to be auto on mobile for varying content */
