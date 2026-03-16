@@ -1,11 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLanguage } from '../utils/LanguageContext';
-// Link import removed for single-page layout
 import useScrollReveal from '../utils/useScrollReveal';
+
+const CASES = [
+  { icon: '🩺', h: 'c1_h', p: 'c1_p' },
+  { icon: '✨', h: 'c2_h', p: 'c2_p' },
+  { icon: '🏢', h: 'c3_h', p: 'c3_p' },
+  { icon: '🌍', h: 'c4_h', p: 'c4_p' },
+  { icon: '⚖️', h: 'c5_h', p: 'c5_p' },
+  { icon: '🚗', h: 'c6_h', p: 'c6_p' },
+];
 
 export default function UseCases() {
   const { t } = useLanguage();
   const revealRef = useScrollReveal();
+  const [active, setActive] = useState(0);
+
+  const prev = () => setActive(i => (i - 1 + CASES.length) % CASES.length);
+  const next = () => setActive(i => (i + 1) % CASES.length);
 
   return (
     <div id="use-cases" ref={revealRef}>
@@ -16,72 +28,60 @@ export default function UseCases() {
             <h2>{t('cases_h2')}</h2>
           </div>
 
-          <div className="cases-carousel-wrapper">
-            <button className="carousel-btn prev" onClick={(e) => {
-              const el = e.target.closest('.cases-carousel-wrapper').querySelector('.cases-carousel');
-              el.scrollBy({ left: -300, behavior: 'smooth' });
-            }}>
-              &lt;
-            </button>
+          {/* ── Desktop grid ──────────────────────────────── */}
+          <div className="cases-grid-desktop">
+            {CASES.map((c, i) => (
+              <div key={i} className="case-card glass-panel">
+                <div className="case-icon">{c.icon}</div>
+                <h3>{t(c.h)}</h3>
+                <p>{t(c.p)}</p>
+                <a href="#book" className="learn-more">
+                  <span>{t('learn_more')}</span> <span>{t('demo_dir_arrow')}</span>
+                </a>
+              </div>
+            ))}
+          </div>
 
-            <div className="cases-carousel">
-              <div className="case-card glass-panel fade-up stagger-1">
-                <div className="case-icon">🩺</div>
-                <h3>{t('c1_h')}</h3>
-                <p>{t('c1_p')}</p>
-                <a href="#book" className="learn-more">
-                  <span>{t('learn_more')}</span> <span>{t('demo_dir_arrow')}</span>
-                </a>
-              </div>
-              <div className="case-card glass-panel fade-up stagger-2">
-                <div className="case-icon">✨</div>
-                <h3>{t('c2_h')}</h3>
-                <p>{t('c2_p')}</p>
-                <a href="#book" className="learn-more">
-                  <span>{t('learn_more')}</span> <span>{t('demo_dir_arrow')}</span>
-                </a>
-              </div>
-              <div className="case-card glass-panel fade-up stagger-3">
-                <div className="case-icon">🏢</div>
-                <h3>{t('c3_h')}</h3>
-                <p>{t('c3_p')}</p>
-                <a href="#book" className="learn-more">
-                  <span>{t('learn_more')}</span> <span>{t('demo_dir_arrow')}</span>
-                </a>
-              </div>
-              <div className="case-card glass-panel fade-up stagger-4">
-                <div className="case-icon">🌍</div>
-                <h3>{t('c4_h')}</h3>
-                <p>{t('c4_p')}</p>
-                <a href="#book" className="learn-more">
-                  <span>{t('learn_more')}</span> <span>{t('demo_dir_arrow')}</span>
-                </a>
-              </div>
-              <div className="case-card glass-panel fade-up stagger-5">
-                <div className="case-icon">⚖️</div>
-                <h3>{t('c5_h')}</h3>
-                <p>{t('c5_p')}</p>
-                <a href="#book" className="learn-more">
-                  <span>{t('learn_more')}</span> <span>{t('demo_dir_arrow')}</span>
-                </a>
-              </div>
-              <div className="case-card glass-panel fade-up stagger-6">
-                <div className="case-icon">🚗</div>
-                <h3>{t('c6_h')}</h3>
-                <p>{t('c6_p')}</p>
-                <a href="#book" className="learn-more">
-                  <span>{t('learn_more')}</span> <span>{t('demo_dir_arrow')}</span>
-                </a>
-              </div>
+          {/* ── Mobile slider ─────────────────────────────── */}
+          <div className="cases-slider">
+            <div className="cases-slider-track">
+              {CASES.map((c, i) => (
+                <div
+                  key={i}
+                  className={`cases-slide ${i === active ? 'active' : i === (active - 1 + CASES.length) % CASES.length ? 'prev' : 'next'}`}
+                >
+                  <div className="case-card glass-panel">
+                    <div className="case-icon">{c.icon}</div>
+                    <h3>{t(c.h)}</h3>
+                    <p>{t(c.p)}</p>
+                    <a href="#book" className="learn-more">
+                      <span>{t('learn_more')}</span> <span>{t('demo_dir_arrow')}</span>
+                    </a>
+                  </div>
+                </div>
+              ))}
             </div>
 
-            <button className="carousel-btn next" onClick={(e) => {
-              const el = e.target.closest('.cases-carousel-wrapper').querySelector('.cases-carousel');
-              el.scrollBy({ left: 300, behavior: 'smooth' });
-            }}>
-              &gt;
-            </button>
+            <div className="cases-slider-controls">
+              <button className="slider-arrow" onClick={prev} aria-label="Previous">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+              </button>
+              <div className="slider-dots">
+                {CASES.map((_, i) => (
+                  <button
+                    key={i}
+                    className={`slider-dot ${i === active ? 'active' : ''}`}
+                    onClick={() => setActive(i)}
+                    aria-label={`Go to slide ${i + 1}`}
+                  />
+                ))}
+              </div>
+              <button className="slider-arrow" onClick={next} aria-label="Next">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </button>
+            </div>
           </div>
+
         </div>
       </section>
     </div>
