@@ -787,15 +787,7 @@ h2 {
     gap: 32px;
 }
 
-.demo-columns.live-mode {
-    grid-template-columns: 1fr;
-    max-width: 600px;
-    margin: 0 auto;
-}
 
-.demo-columns.live-mode .whatsapp-mockup {
-    display: none;
-}
 
 .column-title {
     font-size: 14px;
@@ -1058,6 +1050,7 @@ h2 {
     display: flex;
     flex-direction: column;
     gap: 24px;
+    min-height: 400px;
 }
 
 .glass-panel-inner {
@@ -1228,17 +1221,66 @@ h2 {
     font-weight: 500;
 }
 
-/* Use Cases */
-.cases-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+/* Use Cases Carousel */
+.cases-carousel-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
     margin-top: 48px;
+}
+
+.cases-carousel {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 12px;
+    /* hide scrollbar */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.cases-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel-btn {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: white;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-fast);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    z-index: 2;
+}
+
+.carousel-btn:hover {
+    background: var(--color-text-primary);
+    color: white;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
 }
 
 .case-card {
     padding: 32px;
     border-radius: var(--radius-lg);
+    min-width: 280px;
+    max-width: 320px;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
 }
 
 .case-card:hover {

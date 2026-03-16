@@ -143,7 +143,7 @@ export default function InteractiveDemo() {
                 </div>
 
                 <div className="demo-container glass-panel fade-up stagger-2">
-                    <div className={`demo-columns ${demoMode === 'live' ? 'live-mode' : ''}`}>
+                    <div className="demo-columns">
                         {/* WhatsApp Mockup */}
                         <div className="demo-column whatsapp-mockup">
                             <h3 className="column-title">{t('demo_col1')}</h3>
