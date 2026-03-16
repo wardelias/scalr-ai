@@ -1700,8 +1700,6 @@ h2 {
     .stats-grid, .pricing-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-        grid-template-columns: repeat(2, 1fr);
-    }
 
     /* ─ Use Cases ─ */
     .cases-grid-desktop {
