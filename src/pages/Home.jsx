@@ -41,57 +41,11 @@ export default function Home() {
             </a>
           </div>
 
-          <div className="hero-visual fade-up stagger-4">
-            <div className="glass-panel hero-panel">
-              <div className="mockup-header">
-                <div className="mockup-dots">
-                  <span></span><span></span><span></span>
-                </div>
-                <div className="mockup-title">{t('hero_calling')}</div>
-              </div>
-              <div className="mockup-body">
-                <div className="waveform-container">
-                  <div className="bar"></div><div className="bar"></div><div className="bar"></div>
-                  <div className="bar"></div><div className="bar"></div><div className="bar"></div>
-                  <div className="bar"></div><div className="bar"></div><div className="bar"></div>
-                  <div className="bar"></div><div className="bar"></div><div className="bar"></div>
-                </div>
-                <p className="mockup-text" dir="rtl">"שלום, תודה שהתקשרת לקליניקה. איך אוכל לעזור?"</p>
-              </div>
-              <div className="mockup-footer">
-                <span className="status-label">
-                  <span className="pulse-dot"></span> <span>{t('hero_status')}</span>
-                </span>
-              </div>
-            </div>
-            <div className="hero-glow"></div>
-          </div>
+
         </div>
       </section>
 
-      {/* ── Stats Banner ─────────────────────────────────── */}
-      <section className="stats-banner" ref={statsRef}>
-        <div className="container container-wide">
-          <div className="banner-grid">
-            <div className="banner-item fade-up stagger-1">
-              <div className="banner-number">{t('stat_1_num')}</div>
-              <div className="banner-text">{t('stat_1_text')}</div>
-            </div>
-            <div className="banner-item fade-up stagger-2">
-              <div className="banner-number">{t('stat_2_num')}</div>
-              <div className="banner-text">{t('stat_2_text')}</div>
-            </div>
-            <div className="banner-item fade-up stagger-3">
-              <div className="banner-number">{t('stat_3_num')}</div>
-              <div className="banner-text">{t('stat_3_text')}</div>
-            </div>
-            <div className="banner-item fade-up stagger-4">
-              <div className="banner-number">{t('stat_4_num')}</div>
-              <div className="banner-text">{t('stat_4_text')}</div>
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       {/* All sections integrated (they have their own revealRefs now) */}
       <Solutions />
@@ -109,9 +63,16 @@ export default function Home() {
             <a href="#book" onClick={(e) => { e.preventDefault(); openDemoModal(); }} className="btn-primary btn-large btn-block">
               <span>{t('btn_book_your')}</span> <span style={{ display: 'inline-block' }}>{t('demo_dir_arrow')}</span>
             </a>
-            <div className="cta-alt">
-              <span>{t('cta_al')}</span>{' '}
-              <a href="tel:+972500000000" className="accent-text" dir="ltr">+972-50-000-0000</a>
+            <div className="cta-alt" style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap', alignItems: 'center', marginTop: '24px' }}>
+              <span>{t('cta_al')}</span>
+              <a href="tel:+972544799652" className="accent-text" dir="ltr" style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                +972-54-479-9652
+              </a>
+              <a href="https://wa.me/972544799652" target="_blank" rel="noopener noreferrer" className="accent-text" dir="ltr" style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                WhatsApp
+              </a>
             </div>
           </div>
         </div>
