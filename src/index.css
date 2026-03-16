@@ -643,6 +643,7 @@ h2 {
     grid-template-columns: repeat(4, 1fr);
     gap: 24px;
     margin-top: 48px;
+    justify-items: center;
 }
 
 .stat-card {
@@ -1327,10 +1328,6 @@ h2 {
 .case-card {
     padding: 32px;
     border-radius: var(--radius-lg);
-    min-width: 280px;
-    max-width: 320px;
-    flex-shrink: 0;
-    scroll-snap-align: start;
     display: flex;
     flex-direction: column;
 }
@@ -1703,6 +1700,8 @@ h2 {
     .stats-grid, .pricing-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+        grid-template-columns: repeat(2, 1fr);
+    }
 
     /* ─ Use Cases ─ */
     .cases-grid-desktop {
@@ -1794,6 +1793,16 @@ h2 {
 
     .cases-slider {
         display: block;
+    }
+
+    /* ─ Problem Stats — 1 column ─ */
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* Fix slider height to be auto on mobile for varying content */
+    .cases-slider-track {
+        height: 360px;
     }
 
     /* ─ Demo ─ */

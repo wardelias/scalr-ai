@@ -11,7 +11,7 @@ export default function Solutions() {
     <div id="solutions" ref={revealRef}>
       <section className="pain-points">
         <div className="container">
-          <div className="section-header fade-up">
+          <div className="section-header text-center fade-up">
             <span className="section-label">{t('prob_label')}</span>
             <h2>{t('prob_h2')}</h2>
           </div>
