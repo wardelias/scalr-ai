@@ -10,6 +10,8 @@ export default function Solutions() {
   return (
     <div id="solutions" ref={revealRef}>
       <section className="pain-points">
+        <div className="orb orb-blue orb-sol-1" aria-hidden="true" />
+        <div className="orb orb-cyan orb-sol-2" aria-hidden="true" />
         <div className="container">
           <div className="section-header text-center fade-up">
             <span className="section-label">{t('prob_label')}</span>
@@ -42,6 +44,7 @@ export default function Solutions() {
       </section>
 
       <section className="solution">
+        <div className="orb orb-indigo orb-sol-1" aria-hidden="true" />
         <div className="container">
           <div className="section-header text-center fade-up">
             <span className="section-label">{t('sol_label')}</span>

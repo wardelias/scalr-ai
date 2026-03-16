@@ -20,6 +20,8 @@ export default function Home() {
     <div>
       {/* ── Hero ─────────────────────────────────────────── */}
       <section className="hero" id="home" ref={heroRef}>
+        <div className="orb orb-blue orb-hero-1" aria-hidden="true" />
+        <div className="orb orb-cyan orb-hero-2" aria-hidden="true" />
         <div className="container hero-content">
           <div className="badge fade-up">
             <span className="pulse-dot"></span>
@@ -55,6 +57,8 @@ export default function Home() {
 
       {/* ── Final CTA ────────────────────────────────────── */}
       <section className="final-cta" id="book" ref={ctaRef}>
+        <div className="orb orb-blue orb-cta-1" aria-hidden="true" />
+        <div className="orb orb-indigo orb-cta-2" aria-hidden="true" />
         <div className="container text-center fade-up">
           <h2>{t('cta_h2')}</h2>
           <p className="section-subtitle">{t('cta_sub')}</p>

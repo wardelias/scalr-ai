@@ -181,6 +181,59 @@ body {
     max-width: 100vw;
 }
 
+/* ─── Liquid Glass Blue Orbs ─────────────────────────────────────── */
+
+@keyframes orbFloat {
+    0%   { transform: translate(0, 0) scale(1); }
+    33%  { transform: translate(20px, -30px) scale(1.04); }
+    66%  { transform: translate(-15px, 15px) scale(0.97); }
+    100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes orbPulse {
+    0%, 100% { opacity: 0.45; }
+    50%       { opacity: 0.65; }
+}
+
+.orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+    z-index: 0;
+    animation: orbFloat 14s ease-in-out infinite, orbPulse 8s ease-in-out infinite;
+    will-change: transform, opacity;
+}
+
+.orb-blue {
+    background: radial-gradient(circle, rgba(0, 113, 227, 0.28) 0%, rgba(0, 180, 255, 0.12) 60%, transparent 100%);
+}
+
+.orb-indigo {
+    background: radial-gradient(circle, rgba(80, 60, 255, 0.18) 0%, rgba(0, 113, 227, 0.08) 60%, transparent 100%);
+}
+
+.orb-cyan {
+    background: radial-gradient(circle, rgba(0, 200, 255, 0.20) 0%, rgba(0, 113, 227, 0.06) 60%, transparent 100%);
+}
+
+/* Orb positions */
+.orb-hero-1 { width: 700px; height: 700px; top: -150px; left: -100px; animation-duration: 16s; }
+.orb-hero-2 { width: 500px; height: 500px; top: 100px; right: -80px; animation-delay: -5s; animation-duration: 12s; }
+.orb-sol-1  { width: 600px; height: 600px; top: 50px;  right: -100px; animation-delay: -3s; animation-duration: 18s; }
+.orb-sol-2  { width: 400px; height: 400px; bottom: 0;  left: -60px;  animation-delay: -9s; animation-duration: 13s; }
+.orb-demo-1 { width: 550px; height: 550px; top: -80px; left: 50%;  margin-left: -275px; animation-delay: -6s; animation-duration: 15s; }
+.orb-cta-1  { width: 500px; height: 500px; top: -50px;  right: 0;   animation-delay: -2s; animation-duration: 17s; }
+.orb-cta-2  { width: 400px; height: 400px; bottom: -80px; left: 0;  animation-delay: -11s; animation-duration: 14s; }
+
+/* Sections containing orbs must be position:relative and overflow:hidden */
+.hero, .pain-points, .solution, .final-cta {
+    position: relative;
+    overflow: hidden;
+}
+
+
+
 /* Base Utility Classes */
 .container {
     max-width: var(--max-width);
