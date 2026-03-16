@@ -16,6 +16,8 @@ export const translations = {
         hero_calling: "Calling Clinic...",
         hero_status: "AI Voice Agent · Hebrew · Live",
         
+        sol_floating_text: "Hello",
+        
         prob_label: "THE PROBLEM",
         prob_h2: "Israeli Businesses Lose Thousands in Leads Every Month",
         prob_1: "of leads go cold when you don't respond within 5 minutes",
@@ -147,6 +149,7 @@ export const translations = {
         f_cpy: "2026 scalr.ai",
         f_contact: "Contact",
         f_bot: "Built in Israel 🇮🇱 for Israeli businesses",
+        f_insta_link: "https://www.instagram.com/scalrai.il/",
 
         demo_live_title: "Try Live Experience",
         demo_call_me: "Call Me",
@@ -183,6 +186,8 @@ export const translations = {
         hero_cta_icon: "◀",
         hero_calling: "מתקשר למרפאה...",
         hero_status: "סוכן קולי AI · עברית · לייב",
+        
+        sol_floating_text: "שלום",
         
         prob_label: "הבעיה",
         prob_h2: "עסקים ישראלים מפסידים אלפי שקלים על לידים כל חודש",
@@ -315,6 +320,7 @@ export const translations = {
         f_cpy: "2026 scalr.ai",
         f_contact: "צור קשר",
         f_bot: "נבנה בישראל 🇮🇱 עבור עסקים ישראלים",
+        f_insta_link: "https://www.instagram.com/scalrai.il/",
 
         demo_live_title: "נסה את החוויה החיה",
         demo_call_me: "התקשרו אלי",
@@ -336,21 +342,23 @@ export const translations = {
         form_error_msg: "אירעה שגיאה בשליחת הבקשה. אנא נסה שוב."
     },
     ar: {
-        meta_title: "scalr.ai | وكلاء ذكاء اصطناعي يتحدثون العبرية والعربية بطلاقة.",
+        meta_title: "scalr.ai | وكلاء ذكاء اصطناعي يتحدثون العربية بطلاقة.",
         nav_solutions: "الحلول",
         nav_use_cases: "الاستخدامات",
         nav_pricing: "الأسعار",
         nav_about: "من نحن",
         nav_book: "احجز عرضاً تجريبياً",
-        hero_badge: "متاح الآن — وكلاء صوت عبري وعربي",
-        hero_h1_1: "وكلاء AI يتحدثون العبرية والعربية.",
+        hero_badge: "متاح الآن — وكلاء صوت باللغة العربية",
+        hero_h1_1: "وكلاء AI يتحدثون العربية.",
         hero_h1_2: "بطلاقة.",
         hero_sub: "وكلاء صوت يجيبون على المكالمات، وروبوتات واتساب تفلتر العملاء، وأنظمة حجز ذكية — تعمل 24/7 بلغة عملائك.",
         hero_cta_1: "احجز عرضاً تجريبياً",
         hero_cta_2: "اسمع عرض حي",
         hero_cta_icon: "◀",
         hero_calling: "يتصل بالعيادة...",
-        hero_status: "وكيل صوتي AI · عبري · مباشر",
+        hero_status: "وكيل صوتي AI · مباشر",
+        
+        sol_floating_text: "أهلاً",
         
         prob_label: "المشكلة",
         prob_h2: "الشركات تخسر الآلاف في العملاء المحتملين كل شهر",
@@ -363,7 +371,7 @@ export const translations = {
         prob_4: "عملاؤك يتوقعون التواجد — بما في ذلك أيام السبت والأعياد",
 
         sol_label: "الحل",
-        sol_h2: "ذكاء اصطناعي يجيب، يفلتر، ويحجز — بالعبرية والعربية",
+        sol_h2: "ذكاء اصطناعي يجيب، يفلتر، ويحجز — باللغة العربية",
         sol_sub: "ليس مجرد روبوت محادثة عادي. نظام AI محادثة يفهم السياق، ويتحدث بشكل طبيعي بالعربية، ويحول زيارات الإعلانات إلى مواعيد محجوزة — سواء عبر واتساب أو الهاتف.",
         sol_s1_h: "1. العميل المحتمل يصل",
         sol_s1_p: "من إعلانات ميتا، جوجل، أو موقعك — يحصل كل عميل على رد فوري على واتساب أو الهاتف خلال ثوانٍ.",
@@ -456,7 +464,7 @@ export const translations = {
         hiw_1_h: "اليوم 1 — مكالمة الاستكشاف",
         hiw_1_p: "نتعرف على عملك، ونرسم مسار المبيعات الخاص بك، ونحدد ملف العميل المثالي.",
         hiw_2_h: "أيام 2-4 — البناء",
-        hiw_2_p: "نبرمج وكلاء الذكاء الاصطناعي الخاصين بك، ونبني مسارات الواتساب وبرية.",
+        hiw_2_p: "نبرمج وكلاء الذكاء الاصطناعي الخاصين بك، ونبني مسارات الواتساب وبرامج المحادثة.",
         hiw_3_h: "أيام 5-6 — الاختبار",
         hiw_3_p: "نجري محادثات اختبارية، ونضبط استجابات الذكاء الاصطناعي، ونربط كل شيء بتقويمك.",
         hiw_4_h: "اليوم 7 — الإطلاق",
@@ -482,7 +490,8 @@ export const translations = {
         cta_al: "أو راجعنا بشكل مباشر عبر الواتساب على",
         f_cpy: "2026 scalr.ai",
         f_contact: "اتصل بنا",
-        f_bot: "صُنع للشركات",
+        f_bot: "تم تطويره للشركات العربية",
+        f_insta_link: "https://www.instagram.com/scalrai/",
 
         demo_live_title: "جرب التجربة المباشرة",
         demo_call_me: "اتصل بي",

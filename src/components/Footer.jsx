@@ -21,7 +21,7 @@ export default function Footer() {
           <div className="footer-social">
             <a href="https://wa.me/972544799652" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">WA</a>
             <a href="#" aria-label="LinkedIn">IN</a>
-            <a href="https://www.instagram.com/scalrai.il/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">IG</a>
+            <a href={t('f_insta_link')} target="_blank" rel="noopener noreferrer" aria-label="Instagram">IG</a>
           </div>
         </div>
         <div className="footer-bottom">

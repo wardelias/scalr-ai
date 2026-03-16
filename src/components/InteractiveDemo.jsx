@@ -2,7 +2,68 @@ import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../utils/LanguageContext';
 import useScrollReveal from '../utils/useScrollReveal';
 
-const demoData = {
+const demoDataAr = {
+    dental: {
+        whatsapp: [
+            { sender: 'lead', text: 'مرحباً، أبحث عن طبيب أسنان لعلاج العصب', time: '10:02' },
+            { sender: 'ai', text: 'أهلاً بك! 😊 بالتأكيد، يمكننا المساعدة. لدينا متخصصون في علاج العصب. هل يمكنني طرح بعض الأسئلة السريعة؟', time: '10:02' },
+            { sender: 'lead', text: 'نعم بالتأكيد', time: '10:03' },
+            { sender: 'ai', text: 'ممتاز. هل تشعر بألم حالياً أم أنه إجراء مخطط له؟', time: '10:03' },
+            { sender: 'lead', text: 'أشعر بالألم منذ أسبوع', time: '10:04' },
+            { sender: 'ai', text: 'أفهم ذلك، من المهم معالجته بسرعة. لدينا موعد متاح غداً في الساعة 10:00 مع الدكتور سمير. هل يناسبك؟', time: '10:04' },
+            { sender: 'lead', text: 'نعم، ممتاز', time: '10:05' },
+            { sender: 'ai', text: 'رائع! ✅ تم تأكيد الموعد. ستصلك رسالة تذكير غداً صباحاً. أتمنى لك الشفاء العاجل! 🙏', time: '10:05' }
+        ],
+        phoneLang: 'العربية',
+        phoneTranscript: '"مرحباً، شكراً لاتصالك بمركز طب الأسنان. أنا المساعدة الرقمية. كيف يمكنني مساعدتك؟... فهمت أنك تعاني من الألم، دعنا نجد لك موعداً عاجلاً..."',
+        duration: '0:34'
+    },
+    beauty: {
+        whatsapp: [
+            { sender: 'lead', text: 'مرحباً، كم تكلفة تمليس الشعر؟', time: '14:15' },
+            { sender: 'ai', text: 'أهلاً بك! 😊 يبدأ التمليس لدينا من 350 شيكل للشعر القصير و550 شيكل للشعر الطويل. ما هو طول شعرك؟', time: '14:15' },
+            { sender: 'lead', text: 'طويل، تحت الأكتاف', time: '14:16' },
+            { sender: 'ai', text: 'جميل! تمليس الشعر الطويل بـ 550 شيكل ويستغرق حوالي 3 ساعات. لدينا موعد متاح يوم الثلاثاء الساعة 11:00 أو الخميس الساعة 14:00. ما الذي يناسبك؟', time: '14:16' },
+            { sender: 'lead', text: 'الخميس من فضلك', time: '14:18' },
+            { sender: 'ai', text: 'ممتاز! ✅ تم حجز موعدك يوم الخميس الساعة 14:00 مع ليلى. يرجى القدوم بشعر جاف. نراك قريباً! 💇‍♀️', time: '14:18' }
+        ],
+        phoneLang: 'العربية',
+        phoneTranscript: '"مرحباً، لقد وصلت إلى ستوديو الجمال. يسعدني مساعدتك في حجز موعد. ما هو الإجراء الذي يهمك؟..."',
+        duration: '0:42'
+    },
+    realestate: {
+        whatsapp: [
+            { sender: 'lead', text: 'مرحباً، رأيت الشقة في حيفا. هل لا تزال متاحة؟', time: '09:30' },
+            { sender: 'ai', text: 'أهلاً بك! نعم، الشقة في شارع الاستقلال لا تزال متاحة. 4 غرف، طابق 3، شرفة مشمسة. السعر 2,850,000 شيكل. هل ترغب في حجز جولة؟', time: '09:30' },
+            { sender: 'lead', text: 'نعم، ما هي الميزانية المطلوبة؟', time: '09:32' },
+            { sender: 'ai', text: 'هذه الشقة بـ 2,850,000 شيكل. لدينا أيضاً خيارات تبدأ من 2,200,000 في المنطقة. ما هي ميزانيتك التقريبية؟', time: '09:32' },
+            { sender: 'lead', text: 'حتى 2.5', time: '09:35' },
+            { sender: 'ai', text: 'ممتاز، لدي 3 شقق مناسبة. هل يمكننا تحديد موعد للجولة يوم الجمعة صباحاً؟', time: '09:35' },
+            { sender: 'lead', text: 'يناسبني', time: '09:38' },
+            { sender: 'ai', text: '✅ تم حجز الجولة يوم الجمعة الساعة 10:00. سأرسل لك العناوين في رسالة منفصلة. إلى اللقاء!', time: '09:38' }
+        ],
+        phoneLang: 'العربية',
+        phoneTranscript: '"مرحباً، شكراً لاتصالك. كيف يمكنني مساعدتك؟... لدينا شقق في المنطقة التي تبحث عنها..."',
+        duration: '1:15'
+    },
+    medical: {
+        whatsapp: [
+            { sender: 'lead', text: 'مرحباً، أبحث عن زراعة الأسنان. ما هي الأسعار؟', time: '16:00' },
+            { sender: 'ai', text: 'أهلاً بك! نحن نعمل مع أفضل عيادات طب الأسنان لإجراءات الزراعة. تبدأ الزرعة الواحدة من 750 دولاراً تشمل التاج. كم زرعة تحتاج؟', time: '16:00' },
+            { sender: 'lead', text: 'أحتاج 4 زرعات، فك علوي', time: '16:05' },
+            { sender: 'ai', text: 'فهمت. بالنسبة لـ 4 زرعات علوية، التكلفة التقريبية بين 3000-4000 دولار حسب خطة العلاج المحددة. يشمل ذلك استشارة مجانية وأشعة بانورامية. من أين ستأتي؟', time: '16:05' },
+            { sender: 'lead', text: 'من قطر', time: '16:08' },
+            { sender: 'ai', text: 'رائع! لدينا العديد من المرضى من قطر. يمكننا ترتيب الاستقبال من المطار، والفندق القريب من العيادة، والترجمة. هل ترغب في تحديد موعد لاستشارة فيديو مجانية مع الطبيب؟', time: '16:08' },
+            { sender: 'lead', text: 'نعم من فضلك', time: '16:10' },
+            { sender: 'ai', text: '✅ ممتاز! سأوصلك بمنسق المرضى لدينا لتحديد الموعد. ستصلك رسالة خلال ساعة. شكراً لك! 🙏', time: '16:10' }
+        ],
+        phoneLang: 'العربية',
+        phoneTranscript: '"مرحباً، شكراً لاتصالك. أنا المساعد الذكي للسياحة العلاجية. يمكنني مساعدتك في الأسعار والمواعيد وترتيبات السفر. ما الإجراء الذي يهمك؟..."',
+        duration: '0:55'
+    }
+};
+
+const demoDataHe = {
     dental: {
         whatsapp: [
             { sender: 'lead', text: 'שלום, אני מחפש רופא שיניים לטיפול שורש', time: '10:02' },
@@ -64,7 +125,7 @@ const demoData = {
 };
 
 export default function InteractiveDemo() {
-    const { t } = useLanguage();
+    const { t, language } = useLanguage();
     const [activeTab, setActiveTab] = useState('dental');
     const [isPlaying, setIsPlaying] = useState(false);
     const [waveHeights, setWaveHeights] = useState(new Array(20).fill(3));
@@ -118,8 +179,8 @@ export default function InteractiveDemo() {
         }
     };
 
-    const data = demoData[activeTab];
-    const isEnglish = data.phoneLang === 'English';
+    const data = (language === 'ar' ? demoDataAr : demoDataHe)[activeTab];
+    const isEnglish = activeTab === 'medical'; // medical tourism is English-centric
 
     return (
         <section className="demo-section" id="demo" ref={revealRef}>

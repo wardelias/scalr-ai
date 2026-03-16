@@ -60,7 +60,7 @@ export default function Solutions() {
             </div>
             <div className="flow-connector fade-up stagger-2"></div>
             <div className="flow-step glass-panel fade-up stagger-3">
-              <div className="step-icon">🧠 <span className="floating-text" dir="rtl">שלום</span></div>
+              <div className="step-icon">🧠 <span className="floating-text" dir="rtl">{t('sol_floating_text')}</span></div>
               <h3>{t('sol_s2_h')}</h3>
               <p>{t('sol_s2_p')}</p>
             </div>
