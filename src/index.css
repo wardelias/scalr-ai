@@ -787,6 +787,16 @@ h2 {
     gap: 32px;
 }
 
+.demo-columns.live-mode {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.demo-columns.live-mode .whatsapp-mockup {
+    display: none;
+}
+
 .column-title {
     font-size: 14px;
     text-transform: uppercase;
