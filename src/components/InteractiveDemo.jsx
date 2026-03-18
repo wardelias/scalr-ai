@@ -125,7 +125,7 @@ const demoDataHe = {
 };
 
 export default function InteractiveDemo() {
-    const { t, language } = useLanguage();
+    const { t, currentLang } = useLanguage();
     const [activeTab, setActiveTab] = useState('dental');
     const [isPlaying, setIsPlaying] = useState(false);
     const [waveHeights, setWaveHeights] = useState(new Array(20).fill(3));
@@ -179,7 +179,7 @@ export default function InteractiveDemo() {
         }
     };
 
-    const data = (language === 'ar' ? demoDataAr : demoDataHe)[activeTab];
+    const data = (currentLang === 'ar' ? demoDataAr : demoDataHe)[activeTab];
     const isEnglish = activeTab === 'medical'; // medical tourism is English-centric
 
     return (
