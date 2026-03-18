@@ -2261,11 +2261,11 @@ h2 {
         width: 100%;
     }
 
-    /* Use Cases Carousel */
-    .case-card {
-        min-width: 240px;
-        max-width: 260px;
-        padding: 24px;
+    /* Use Cases Carousel — slider cards fill full width */
+    .cases-slide .case-card {
+        min-width: 0;
+        max-width: 100%;
+        padding: 28px 24px;
     }
 
     .carousel-btn {
