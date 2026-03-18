@@ -206,7 +206,7 @@ html {
 body {
     font-family: var(--font-sans);
     color: var(--color-text-primary);
-    background-color: var(--color-bg-primary);
+    background-color: #fbfbfd;
     line-height: 1.6;
     font-size: 17px;
     -webkit-font-smoothing: antialiased;
@@ -565,11 +565,9 @@ h2 {
 .hero {
     padding: calc(var(--section-pad) + 80px) 0 var(--section-pad);
     background: linear-gradient(180deg,
-        rgba(255, 255, 255, 0.65) 0%,
-        rgba(251, 251, 253, 0.55) 50%,
-        rgba(245, 245, 247, 0.50) 100%);
-    backdrop-filter: blur(2px) saturate(120%);
-    -webkit-backdrop-filter: blur(2px) saturate(120%);
+        rgba(255, 255, 255, 0.35) 0%,
+        rgba(251, 251, 253, 0.25) 50%,
+        rgba(245, 245, 247, 0.20) 100%);
     position: relative;
     overflow: hidden;
 }
@@ -758,9 +756,7 @@ h2 {
    Pain Points Section
    ═══════════════════════════════════════════════════════════ */
 .pain-points {
-    background: rgba(255, 255, 255, 0.55);
-    backdrop-filter: blur(2px) saturate(120%);
-    -webkit-backdrop-filter: blur(2px) saturate(120%);
+    background: rgba(255, 255, 255, 0.25);
 }
 
 .stats-grid {
@@ -809,9 +805,7 @@ h2 {
    Solution Flow
    ═══════════════════════════════════════════════════════════ */
 .solution {
-    background: rgba(245, 245, 247, 0.50);
-    backdrop-filter: blur(2px) saturate(120%);
-    -webkit-backdrop-filter: blur(2px) saturate(120%);
+    background: rgba(245, 245, 247, 0.20);
 }
 
 .flow-diagram {
@@ -893,9 +887,7 @@ h2 {
    Interactive Demo Section
    ═══════════════════════════════════════════════════════════ */
 .demo-section {
-    background: rgba(255, 255, 255, 0.50);
-    backdrop-filter: blur(2px) saturate(120%);
-    -webkit-backdrop-filter: blur(2px) saturate(120%);
+    background: rgba(255, 255, 255, 0.20);
 }
 
 .demo-tabs {
@@ -1388,9 +1380,7 @@ h2 {
    Stats Banner
    ═══════════════════════════════════════════════════════════ */
 .stats-banner {
-    background: rgba(245, 245, 247, 0.50);
-    backdrop-filter: blur(2px) saturate(120%);
-    -webkit-backdrop-filter: blur(2px) saturate(120%);
+    background: rgba(245, 245, 247, 0.20);
     padding: 80px 0;
     border-top: 1px solid rgba(0, 0, 0, 0.03);
     border-bottom: 1px solid rgba(0, 0, 0, 0.03);
@@ -1438,9 +1428,7 @@ h2 {
    Use Cases
    ═══════════════════════════════════════════════════════════ */
 .use-cases {
-    background: rgba(245, 245, 247, 0.50);
-    backdrop-filter: blur(2px) saturate(120%);
-    -webkit-backdrop-filter: blur(2px) saturate(120%);
+    background: rgba(245, 245, 247, 0.20);
 }
 
 .cases-grid-desktop {
@@ -1595,9 +1583,7 @@ h2 {
    Pricing
    ═══════════════════════════════════════════════════════════ */
 .pricing {
-    background: rgba(245, 245, 247, 0.50);
-    backdrop-filter: blur(2px) saturate(120%);
-    -webkit-backdrop-filter: blur(2px) saturate(120%);
+    background: rgba(245, 245, 247, 0.20);
 }
 
 .pricing-grid {
@@ -1731,9 +1717,7 @@ h2 {
    How It Works Timeline
    ═══════════════════════════════════════════════════════════ */
 .how-it-works {
-    background: rgba(255, 255, 255, 0.55);
-    backdrop-filter: blur(2px) saturate(120%);
-    -webkit-backdrop-filter: blur(2px) saturate(120%);
+    background: rgba(255, 255, 255, 0.25);
 }
 
 .timeline {
@@ -1810,9 +1794,7 @@ h2 {
    FAQ
    ═══════════════════════════════════════════════════════════ */
 .faq {
-    background: rgba(245, 245, 247, 0.50);
-    backdrop-filter: blur(2px) saturate(120%);
-    -webkit-backdrop-filter: blur(2px) saturate(120%);
+    background: rgba(245, 245, 247, 0.20);
 }
 
 .faq-container {
@@ -1885,10 +1867,8 @@ h2 {
    ═══════════════════════════════════════════════════════════ */
 .final-cta {
     background: radial-gradient(ellipse 80% 60% at center,
-        rgba(0, 113, 227, 0.06) 0%,
-        rgba(255, 255, 255, 0.50) 70%);
-    backdrop-filter: blur(2px) saturate(120%);
-    -webkit-backdrop-filter: blur(2px) saturate(120%);
+        rgba(0, 113, 227, 0.04) 0%,
+        rgba(255, 255, 255, 0.20) 70%);
 }
 
 .cta-form {
@@ -1920,9 +1900,7 @@ h2 {
 .footer {
     padding: 56px 0 32px;
     border-top: 1px solid rgba(0, 0, 0, 0.05);
-    background: rgba(255, 255, 255, 0.65);
-    backdrop-filter: blur(2px) saturate(120%);
-    -webkit-backdrop-filter: blur(2px) saturate(120%);
+    background: rgba(255, 255, 255, 0.30);
     position: relative;
     z-index: 1;
 }
