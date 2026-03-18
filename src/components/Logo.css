@@ -2,30 +2,30 @@
 .logo-mark {
   display: inline-flex;
   align-items: baseline;
-  gap: 4px;
+  gap: 3px;
   text-decoration: none;
   animation: logoFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .logo-text {
-  font-family: 'DM Sans', 'IBM Plex Mono', 'Courier New', monospace;
+  font-family: var(--font-sans);
   font-size: 24px;
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--color-text-primary);
+  transition: color 0.2s ease;
 }
 
-/* Accent dot */
+/* Cyan / blue accent dot */
 .logo-dot-prefix {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #ff8c4b;
+  background: var(--color-accent);
   flex-shrink: 0;
   position: relative;
   top: -1px;
   animation: dotAppear 0.5s 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
-  box-shadow: 0 0 8px rgba(255, 140, 75, 0.5);
 }
 
 @keyframes dotAppear {
@@ -39,10 +39,10 @@
 }
 
 .logo-mark:hover .logo-text {
-  color: rgba(255, 255, 255, 0.85);
+  color: #000;
 }
 
 .logo-mark:hover .logo-dot-prefix {
-  box-shadow: 0 0 12px rgba(255, 140, 75, 0.7);
+  box-shadow: 0 0 8px rgba(0, 113, 227, 0.4);
   transition: box-shadow 0.3s ease;
 }

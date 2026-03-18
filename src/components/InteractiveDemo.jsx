@@ -172,10 +172,12 @@ export default function InteractiveDemo() {
                 setTimeout(() => setCallStatus('idle'), 5000);
             } else {
                 setCallStatus('error');
+                setTimeout(() => setCallStatus('idle'), 5000);
             }
         } catch (error) {
             console.error('Vapi Error:', error);
             setCallStatus('error');
+            setTimeout(() => setCallStatus('idle'), 5000);
         }
     };
 
@@ -293,7 +295,7 @@ export default function InteractiveDemo() {
                                                 />
                                                 <button 
                                                     type="submit" 
-                                                    className={`call-btn ${callStatus}`}
+                                                    className={`call-btn${callStatus !== 'idle' && callStatus !== 'loading' ? ' ' + callStatus : ''}`}
                                                     disabled={callStatus === 'loading'}
                                                 >
                                                     {callStatus === 'loading' ? t('demo_calling') : t('demo_call_btn')}
