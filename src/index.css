@@ -213,6 +213,7 @@ body {
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
     max-width: 100vw;
+    position: relative;
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -400,10 +401,14 @@ body {
    ═══════════════════════════════════════════════════════════ */
 main {
     padding-top: 72px;
+    position: relative;
+    z-index: 1;
 }
 
 section {
     padding: var(--section-pad) 0;
+    position: relative;
+    z-index: 1;
 }
 
 .section-label {
@@ -560,9 +565,11 @@ h2 {
 .hero {
     padding: calc(var(--section-pad) + 80px) 0 var(--section-pad);
     background: linear-gradient(180deg,
-        var(--color-bg-primary) 0%,
-        var(--color-bg-warm) 50%,
-        var(--color-bg-secondary) 100%);
+        rgba(255, 255, 255, 0.65) 0%,
+        rgba(251, 251, 253, 0.55) 50%,
+        rgba(245, 245, 247, 0.50) 100%);
+    backdrop-filter: blur(2px) saturate(120%);
+    -webkit-backdrop-filter: blur(2px) saturate(120%);
     position: relative;
     overflow: hidden;
 }
@@ -751,7 +758,9 @@ h2 {
    Pain Points Section
    ═══════════════════════════════════════════════════════════ */
 .pain-points {
-    background: var(--color-bg-primary);
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(2px) saturate(120%);
+    -webkit-backdrop-filter: blur(2px) saturate(120%);
 }
 
 .stats-grid {
@@ -800,7 +809,9 @@ h2 {
    Solution Flow
    ═══════════════════════════════════════════════════════════ */
 .solution {
-    background: var(--color-bg-secondary);
+    background: rgba(245, 245, 247, 0.50);
+    backdrop-filter: blur(2px) saturate(120%);
+    -webkit-backdrop-filter: blur(2px) saturate(120%);
 }
 
 .flow-diagram {
@@ -882,7 +893,9 @@ h2 {
    Interactive Demo Section
    ═══════════════════════════════════════════════════════════ */
 .demo-section {
-    background: var(--color-bg-primary);
+    background: rgba(255, 255, 255, 0.50);
+    backdrop-filter: blur(2px) saturate(120%);
+    -webkit-backdrop-filter: blur(2px) saturate(120%);
 }
 
 .demo-tabs {
@@ -1375,7 +1388,9 @@ h2 {
    Stats Banner
    ═══════════════════════════════════════════════════════════ */
 .stats-banner {
-    background: var(--color-bg-secondary);
+    background: rgba(245, 245, 247, 0.50);
+    backdrop-filter: blur(2px) saturate(120%);
+    -webkit-backdrop-filter: blur(2px) saturate(120%);
     padding: 80px 0;
     border-top: 1px solid rgba(0, 0, 0, 0.03);
     border-bottom: 1px solid rgba(0, 0, 0, 0.03);
@@ -1423,7 +1438,9 @@ h2 {
    Use Cases
    ═══════════════════════════════════════════════════════════ */
 .use-cases {
-    background: var(--color-bg-secondary);
+    background: rgba(245, 245, 247, 0.50);
+    backdrop-filter: blur(2px) saturate(120%);
+    -webkit-backdrop-filter: blur(2px) saturate(120%);
 }
 
 .cases-grid-desktop {
@@ -1578,7 +1595,9 @@ h2 {
    Pricing
    ═══════════════════════════════════════════════════════════ */
 .pricing {
-    background: var(--color-bg-secondary);
+    background: rgba(245, 245, 247, 0.50);
+    backdrop-filter: blur(2px) saturate(120%);
+    -webkit-backdrop-filter: blur(2px) saturate(120%);
 }
 
 .pricing-grid {
@@ -1712,7 +1731,9 @@ h2 {
    How It Works Timeline
    ═══════════════════════════════════════════════════════════ */
 .how-it-works {
-    background: var(--color-bg-primary);
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(2px) saturate(120%);
+    -webkit-backdrop-filter: blur(2px) saturate(120%);
 }
 
 .timeline {
@@ -1789,7 +1810,9 @@ h2 {
    FAQ
    ═══════════════════════════════════════════════════════════ */
 .faq {
-    background: var(--color-bg-secondary);
+    background: rgba(245, 245, 247, 0.50);
+    backdrop-filter: blur(2px) saturate(120%);
+    -webkit-backdrop-filter: blur(2px) saturate(120%);
 }
 
 .faq-container {
@@ -1863,7 +1886,9 @@ h2 {
 .final-cta {
     background: radial-gradient(ellipse 80% 60% at center,
         rgba(0, 113, 227, 0.06) 0%,
-        rgba(255, 255, 255, 0) 70%);
+        rgba(255, 255, 255, 0.50) 70%);
+    backdrop-filter: blur(2px) saturate(120%);
+    -webkit-backdrop-filter: blur(2px) saturate(120%);
 }
 
 .cta-form {
@@ -1895,7 +1920,11 @@ h2 {
 .footer {
     padding: 56px 0 32px;
     border-top: 1px solid rgba(0, 0, 0, 0.05);
-    background: var(--color-bg-primary);
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(2px) saturate(120%);
+    -webkit-backdrop-filter: blur(2px) saturate(120%);
+    position: relative;
+    z-index: 1;
 }
 
 .footer-content {

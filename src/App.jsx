@@ -4,6 +4,7 @@ import { LanguageProvider } from './utils/LanguageContext';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import LanguageModal from './components/LanguageModal';
+import FloatingBlobs from './components/FloatingBlobs';
 import Home from './pages/Home';
 import { ModalProvider } from './utils/ModalContext';
 import DemoModal from './components/DemoModal';
@@ -13,6 +14,7 @@ function App() {
     <LanguageProvider>
       <ModalProvider>
         <BrowserRouter>
+          <FloatingBlobs />
           <LanguageModal />
           <DemoModal />
           <Navbar />

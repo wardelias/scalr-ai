@@ -1,0 +1,159 @@
+/* ═══════════════════════════════════════════════════════════
+   Floating Blobs — Global Animated Background
+   ═══════════════════════════════════════════════════════════ */
+
+.floating-blobs {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0;
+    will-change: transform, opacity;
+    animation: blobDrift linear infinite, blobFade ease-in-out infinite;
+}
+
+/* ── Drift keyframes (each blob gets unique path) ──────── */
+@keyframes blobDrift {
+    0%   { transform: translate(0, 0) scale(1) rotate(0deg); }
+    25%  { transform: translate(60px, -80px) scale(1.08) rotate(45deg); }
+    50%  { transform: translate(-40px, -160px) scale(0.95) rotate(90deg); }
+    75%  { transform: translate(80px, -60px) scale(1.05) rotate(135deg); }
+    100% { transform: translate(0, 0) scale(1) rotate(180deg); }
+}
+
+@keyframes blobFade {
+    0%, 100% { opacity: 0.35; }
+    50%      { opacity: 0.55; }
+}
+
+/* ── Individual blob styles ────────────────────────────── */
+
+/* Blue — top left, large */
+.blob-1 {
+    width: 600px;
+    height: 600px;
+    top: -5%;
+    left: -8%;
+    background: radial-gradient(circle,
+        rgba(0, 113, 227, 0.28) 0%,
+        rgba(0, 180, 255, 0.12) 50%,
+        transparent 100%);
+    animation-duration: 22s, 10s;
+    animation-delay: 0s, 0s;
+}
+
+/* Cyan — top right */
+.blob-2 {
+    width: 500px;
+    height: 500px;
+    top: 8%;
+    right: -5%;
+    background: radial-gradient(circle,
+        rgba(0, 210, 255, 0.22) 0%,
+        rgba(100, 220, 255, 0.08) 50%,
+        transparent 100%);
+    animation-duration: 26s, 12s;
+    animation-delay: -4s, -2s;
+}
+
+/* Purple / Indigo — center left */
+.blob-3 {
+    width: 550px;
+    height: 550px;
+    top: 28%;
+    left: -4%;
+    background: radial-gradient(circle,
+        rgba(120, 80, 255, 0.20) 0%,
+        rgba(180, 140, 255, 0.08) 50%,
+        transparent 100%);
+    animation-duration: 20s, 14s;
+    animation-delay: -8s, -5s;
+}
+
+/* Pink / Rose — right middle */
+.blob-4 {
+    width: 480px;
+    height: 480px;
+    top: 40%;
+    right: -6%;
+    background: radial-gradient(circle,
+        rgba(255, 120, 190, 0.18) 0%,
+        rgba(255, 180, 220, 0.06) 50%,
+        transparent 100%);
+    animation-duration: 24s, 11s;
+    animation-delay: -12s, -7s;
+}
+
+/* Blue-Cyan — lower center */
+.blob-5 {
+    width: 650px;
+    height: 650px;
+    top: 55%;
+    left: 20%;
+    background: radial-gradient(circle,
+        rgba(0, 140, 255, 0.20) 0%,
+        rgba(0, 200, 255, 0.08) 50%,
+        transparent 100%);
+    animation-duration: 28s, 13s;
+    animation-delay: -6s, -3s;
+}
+
+/* Lavender — bottom left */
+.blob-6 {
+    width: 520px;
+    height: 520px;
+    top: 72%;
+    left: -10%;
+    background: radial-gradient(circle,
+        rgba(160, 120, 255, 0.18) 0%,
+        rgba(200, 180, 255, 0.06) 50%,
+        transparent 100%);
+    animation-duration: 25s, 15s;
+    animation-delay: -10s, -8s;
+}
+
+/* Sky blue — bottom right */
+.blob-7 {
+    width: 560px;
+    height: 560px;
+    top: 80%;
+    right: -8%;
+    background: radial-gradient(circle,
+        rgba(0, 160, 255, 0.22) 0%,
+        rgba(100, 200, 255, 0.08) 50%,
+        transparent 100%);
+    animation-duration: 23s, 12s;
+    animation-delay: -14s, -6s;
+}
+
+/* ── Reduced motion ────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+    .blob {
+        animation: none;
+        opacity: 0.3;
+    }
+}
+
+/* ── Mobile: smaller blobs, slightly more transparent ──── */
+@media (max-width: 768px) {
+    .blob {
+        filter: blur(60px);
+    }
+    .blob-1 { width: 350px; height: 350px; }
+    .blob-2 { width: 300px; height: 300px; }
+    .blob-3 { width: 320px; height: 320px; }
+    .blob-4 { width: 280px; height: 280px; }
+    .blob-5 { width: 380px; height: 380px; }
+    .blob-6 { width: 300px; height: 300px; }
+    .blob-7 { width: 320px; height: 320px; }
+}
