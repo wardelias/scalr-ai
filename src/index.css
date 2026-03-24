@@ -1155,9 +1155,8 @@ h2 {
 
 /* ── WhatsApp Mockup ─────────────────────────────────────── */
 .whatsapp-container {
-    background: rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(20px) saturate(150%);
-    -webkit-backdrop-filter: blur(20px) saturate(150%);
+    background-color: #efeae2;
+    background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40' fill='%23dbd4cc' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E");
     border-radius: var(--radius-md);
     padding: 20px;
     height: 480px;
@@ -1165,17 +1164,18 @@ h2 {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.02);
 }
 
 .whatsapp-container::-webkit-scrollbar {
-    width: 4px;
+    width: 6px;
 }
 .whatsapp-container::-webkit-scrollbar-track {
     background: transparent;
 }
 .whatsapp-container::-webkit-scrollbar-thumb {
-    background: rgba(10, 132, 255, 0.15);
+    background: rgba(0, 0, 0, 0.2);
     border-radius: 4px;
 }
 
@@ -1186,7 +1186,7 @@ h2 {
     font-size: 14px;
     line-height: 1.45;
     position: relative;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 1px 0.5px rgba(11,20,26,.13);
     animation: msgSlide 0.3s ease both;
 }
 
@@ -1197,26 +1197,44 @@ h2 {
 
 .wa-lead {
     background: #ffffff;
-    color: var(--color-text-primary);
+    color: #111111;
     align-self: flex-start;
     border-top-left-radius: 0;
-    border: 1px solid rgba(0, 0, 0, 0.03);
+    border: none;
 }
 
 .wa-ai {
-    background: #e5f0ff;
-    color: var(--color-text-primary);
+    background: #dcf8c6;
+    color: #111111;
     align-self: flex-end;
     border-top-right-radius: 0;
-    border: 1px solid #d4e6ff;
+    border: none;
+}
+
+.wa-msg[dir="rtl"].wa-lead {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 0;
+}
+
+.wa-msg[dir="rtl"].wa-ai {
+    border-top-right-radius: 8px;
+    border-top-left-radius: 0;
 }
 
 .wa-time {
-    font-size: 10px;
-    color: rgba(0, 0, 0, 0.35);
-    float: left;
+    font-size: 11px;
+    color: rgba(11,20,26,.65);
     margin-top: 4px;
+}
+
+.wa-msg[dir="rtl"] .wa-time {
     margin-right: 8px;
+    margin-left: 0;
+}
+
+.wa-msg[dir="ltr"] .wa-time {
+    margin-left: 8px;
+    margin-right: 0;
 }
 
 /* ── Phone Mockup ────────────────────────────────────────── */
