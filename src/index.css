@@ -148,8 +148,8 @@
 :root {
     /* Backgrounds */
     --color-bg-primary:   #ffffff;
-    --color-bg-secondary: #f5f5f7;
-    --color-bg-warm:      #fbfbfd;
+    --color-bg-secondary: #f5f7fa;
+    --color-bg-warm:      #f0f4f8;
 
     /* Text */
     --color-text-primary:   #1d1d1f;
@@ -157,17 +157,17 @@
     --color-text-tertiary:  #86868b;
 
     /* Apple accent blue */
-    --color-accent:       #0071e3;
-    --color-accent-hover: #0077ed;
-    --color-success:      #30d158;
+    --color-accent:       #0a84ff;
+    --color-accent-hover: #007aff;
+    --color-success:      #34c759;
     --color-error:        #ff3b30;
 
     /* Frost / Glass */
-    --glass-bg:      rgba(255, 255, 255, 0.72);
-    --glass-bg-deep: rgba(255, 255, 255, 0.85);
-    --glass-border:  rgba(0, 0, 0, 0.04);
-    --glass-shadow:  0 8px 40px rgba(0, 0, 0, 0.06);
-    --card-shadow:   0 2px 12px rgba(0, 0, 0, 0.04);
+    --glass-bg:      rgba(255, 255, 255, 0.60);
+    --glass-bg-deep: rgba(255, 255, 255, 0.75);
+    --glass-border:  rgba(255, 255, 255, 0.5);
+    --glass-shadow:  0 8px 40px rgba(0, 0, 0, 0.04);
+    --card-shadow:   0 2px 12px rgba(0, 0, 0, 0.03);
 
     /* Typography */
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display',
@@ -243,22 +243,22 @@ body {
 
 .orb-blue {
     background: radial-gradient(circle,
-        rgba(0, 113, 227, 0.22) 0%,
-        rgba(0, 180, 255, 0.10) 60%,
+        rgba(10, 132, 255, 0.15) 0%,
+        rgba(90, 200, 250, 0.08) 60%,
         transparent 100%);
 }
 
 .orb-indigo {
     background: radial-gradient(circle,
-        rgba(80, 60, 255, 0.14) 0%,
-        rgba(0, 113, 227, 0.06) 60%,
+        rgba(90, 200, 250, 0.12) 0%,
+        rgba(10, 132, 255, 0.06) 60%,
         transparent 100%);
 }
 
 .orb-cyan {
     background: radial-gradient(circle,
-        rgba(0, 200, 255, 0.16) 0%,
-        rgba(0, 113, 227, 0.05) 60%,
+        rgba(10, 132, 255, 0.10) 0%,
+        rgba(255, 255, 255, 0.2) 60%,
         transparent 100%);
 }
 
@@ -319,14 +319,14 @@ body {
 }
 
 .btn-primary {
-    background-color: var(--color-text-primary);
+    background-color: var(--color-accent);
     color: #ffffff;
 }
 
 .btn-primary:hover {
-    background-color: #000000;
+    background-color: var(--color-accent-hover);
     transform: scale(1.02);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 4px 20px rgba(10, 132, 255, 0.25);
 }
 
 .btn-secondary {
@@ -362,8 +362,8 @@ body {
    ═══════════════════════════════════════════════════════════ */
 .glass-panel {
     background: var(--glass-bg);
-    backdrop-filter: blur(24px) saturate(180%);
-    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    backdrop-filter: blur(40px) saturate(200%);
+    -webkit-backdrop-filter: blur(40px) saturate(200%);
     border: 1px solid var(--glass-border);
     border-radius: var(--radius-xl);
     box-shadow: var(--glass-shadow);
@@ -1155,7 +1155,9 @@ h2 {
 
 /* ── WhatsApp Mockup ─────────────────────────────────────── */
 .whatsapp-container {
-    background: #efeae2;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(20px) saturate(150%);
+    -webkit-backdrop-filter: blur(20px) saturate(150%);
     border-radius: var(--radius-md);
     padding: 20px;
     height: 480px;
@@ -1163,8 +1165,7 @@ h2 {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20h8v8H20z' fill='rgba(0,0,0,0.015)'/%3E%3C/svg%3E");
+    border: 1px solid rgba(255, 255, 255, 0.6);
 }
 
 .whatsapp-container::-webkit-scrollbar {
@@ -1174,7 +1175,7 @@ h2 {
     background: transparent;
 }
 .whatsapp-container::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(10, 132, 255, 0.15);
     border-radius: 4px;
 }
 
@@ -1199,13 +1200,15 @@ h2 {
     color: var(--color-text-primary);
     align-self: flex-start;
     border-top-left-radius: 0;
+    border: 1px solid rgba(0, 0, 0, 0.03);
 }
 
 .wa-ai {
-    background: #d9fdd3;
+    background: #e5f0ff;
     color: var(--color-text-primary);
     align-self: flex-end;
     border-top-right-radius: 0;
+    border: 1px solid #d4e6ff;
 }
 
 .wa-time {
@@ -1225,10 +1228,10 @@ h2 {
 }
 
 .glass-panel-inner {
-    background: rgba(255, 255, 255, 0.55);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(0, 0, 0, 0.04);
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(20px) saturate(150%);
+    -webkit-backdrop-filter: blur(20px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.7);
     border-radius: var(--radius-md);
     padding: 24px;
 }
