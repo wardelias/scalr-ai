@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useLanguage } from '../utils/LanguageContext';
 import { useModal } from '../utils/ModalContext';
 import Logo from './Logo';
+import LanguageSwitcher from './LanguageSwitcher';
+import { LANGUAGES } from '../utils/translations';
 
 const LINKS = [
   { id: 'method', label: 'nav_method' },
@@ -11,7 +13,7 @@ const LINKS = [
 ];
 
 export default function Navbar() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const { openDemoModal } = useModal();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -63,14 +65,14 @@ export default function Navbar() {
             top: 0,
             behavior: 'smooth'
         });
-        window.history.pushState(null, '', '/');
+        window.history.pushState(null, '', LANGUAGES[lang].path);
     }
   };
 
   return (
     <nav className={`navbar ${isScrolled || mobileMenuOpen ? 'scrolled' : ''}`} id="navbar" ref={navRef} aria-label="Main">
       <div className="nav-container">
-        <a href="#home" onClick={(e) => scrollToSection(e, 'home')} className="nav-logo" aria-label="Scalr — back to top">
+        <a href="#home" onClick={(e) => scrollToSection(e, 'home')} className="nav-logo" aria-label="Scalr">
           <Logo />
         </a>
 
@@ -78,6 +80,7 @@ export default function Navbar() {
           {LINKS.map((link) => (
             <a key={link.id} href={`#${link.id}`} onClick={(e) => scrollToSection(e, link.id)}>{t(link.label)}</a>
           ))}
+          <LanguageSwitcher className="nav-lang" />
         </div>
 
         <a href="#book" onClick={(e) => { e.preventDefault(); openDemoModal(); setMobileMenuOpen(false); }} className="btn-primary nav-cta">

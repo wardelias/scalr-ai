@@ -5,9 +5,9 @@ import { useModal } from '../utils/ModalContext';
 import useScrollReveal from '../utils/useScrollReveal';
 
 const PLANS = [
-  { id: 'p1', amount: '3,500', features: 5, cta: 'p_get' },
-  { id: 'p2', amount: '6,500', features: 6, cta: 'p_get', recommended: true },
-  { id: 'p3', amount: '12,000', features: 6, cta: 'p_contact' },
+  { id: 'p1', amount: '1,000', features: 5, cta: 'p_get' },
+  { id: 'p2', amount: '1,800', features: 6, cta: 'p_get', recommended: true },
+  { id: 'p3', amount: '3,300', features: 6, cta: 'p_contact' },
 ];
 
 export default function Pricing() {
@@ -33,7 +33,7 @@ export default function Pricing() {
                   <h3>{t(`${plan.id}_h`)}</h3>
                   <p className="pricing-desc">{t(`${plan.id}_sub`)}</p>
                   <div className="price">
-                    <span className="currency">₪</span>
+                    <span className="currency">$</span>
                     <span className="amount">{plan.amount}</span>
                     <span className="period">{t('p_mo')}</span>
                   </div>

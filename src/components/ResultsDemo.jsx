@@ -12,8 +12,8 @@ const VERTICALS = {
         likes: '2,481',
         duration: '0:15',
         gradient: 'linear-gradient(135deg, #fde8dc 0%, #f4b8a3 100%)',
-        before: { spend: 42000, revenue: 71400, cpa: 168 },
-        after: { spend: 78000, revenue: 265200, cpa: 85 },
+        before: { spend: 12000, revenue: 20400, cpa: 47 },
+        after: { spend: 22000, revenue: 74800, cpa: 24 },
     },
     beauty: {
         product: '🧴',
@@ -21,8 +21,8 @@ const VERTICALS = {
         likes: '5,102',
         duration: '0:12',
         gradient: 'linear-gradient(135deg, #fde6f3 0%, #f2b3d6 100%)',
-        before: { spend: 28000, revenue: 50400, cpa: 112 },
-        after: { spend: 54000, revenue: 199800, cpa: 55 },
+        before: { spend: 8000, revenue: 14400, cpa: 32 },
+        after: { spend: 15000, revenue: 55500, cpa: 16 },
     },
     home: {
         product: '🛋️',
@@ -30,8 +30,8 @@ const VERTICALS = {
         likes: '1,873',
         duration: '0:21',
         gradient: 'linear-gradient(135deg, #e9eedf 0%, #bccca6 100%)',
-        before: { spend: 55000, revenue: 88000, cpa: 344 },
-        after: { spend: 96000, revenue: 297600, cpa: 177 },
+        before: { spend: 15000, revenue: 24000, cpa: 94 },
+        after: { spend: 27000, revenue: 83700, cpa: 48 },
     },
     health: {
         product: '🍵',
@@ -39,8 +39,8 @@ const VERTICALS = {
         likes: '3,390',
         duration: '0:18',
         gradient: 'linear-gradient(135deg, #dceff9 0%, #a6d2ee 100%)',
-        before: { spend: 35000, revenue: 66500, cpa: 135 },
-        after: { spend: 70000, revenue: 273000, cpa: 66 },
+        before: { spend: 10000, revenue: 19000, cpa: 39 },
+        after: { spend: 20000, revenue: 78000, cpa: 19 },
     },
 };
 
@@ -74,7 +74,7 @@ function buildSeries(vertical, seed) {
 
 const SERIES = Object.fromEntries(TABS.map((tab, i) => [tab, buildSeries(VERTICALS[tab], i + 7)]));
 
-const formatCurrency = (n) => `₪${Math.round(n).toLocaleString('en-US')}`;
+const formatCurrency = (n) => `$${Math.round(n).toLocaleString('en-US')}`;
 const formatRoas = (n) => `${n.toFixed(2)}x`;
 
 function formatChange(from, to) {

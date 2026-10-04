@@ -1,6 +1,7 @@
 import React from 'react';
 // Link import removed for single-page layout
 import { useLanguage } from '../utils/LanguageContext';
+import LanguageSwitcher from './LanguageSwitcher';
 
 export default function Footer() {
   const { t } = useLanguage();
@@ -24,6 +25,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="footer-bottom">
+          <LanguageSwitcher className="footer-lang" />
           <p>{t('f_bot')}</p>
         </div>
       </div>

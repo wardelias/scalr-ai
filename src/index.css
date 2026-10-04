@@ -35,7 +35,7 @@
     --card-shadow:   0 2px 12px rgba(0, 0, 0, 0.03);
 
     /* Typography */
-    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display',
+    --font-sans: 'Inter', 'Heebo', -apple-system, BlinkMacSystemFont, 'SF Pro Display',
                  'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
     --font-mono: 'IBM Plex Mono', 'SF Mono', Menlo, monospace;
 
@@ -52,6 +52,28 @@
     /* Transitions */
     --transition-fast:   0.2s ease;
     --transition-smooth: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hebrew page: Heebo first, and looser tracking — tight negative tracking hurts Hebrew */
+:root[lang="he"] {
+    --font-sans: 'Heebo', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+}
+
+:root[lang="he"] h1,
+:root[lang="he"] h2,
+:root[lang="he"] .stat-number,
+:root[lang="he"] .modal-title {
+    letter-spacing: -0.01em;
+}
+
+/* The mono font has no Hebrew glyphs — use the sans stack without tracking */
+[dir="rtl"] .transcript-caption,
+[dir="rtl"] .res-note,
+[dir="rtl"] .footer-bottom,
+[dir="rtl"] .pricing-disclaimer,
+[dir="rtl"] .setup-fee {
+    font-family: var(--font-sans);
+    letter-spacing: 0;
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -384,7 +406,7 @@ h2 {
     align-items: center;
 }
 
-.nav-links a {
+.nav-links > a {
     text-decoration: none;
     color: var(--color-text-secondary);
     font-size: 14px;
@@ -394,7 +416,7 @@ h2 {
     border-radius: var(--radius-pill);
 }
 
-.nav-links a:hover {
+.nav-links > a:hover {
     color: var(--color-text-primary);
     background: rgba(0, 0, 0, 0.03);
 }
@@ -405,7 +427,7 @@ h2 {
         top: 100%;
         left: 0;
         right: 0;
-        background: rgba(255, 255, 255, 0.98);
+        background: #ffffff;
         backdrop-filter: blur(24px) saturate(180%);
         -webkit-backdrop-filter: blur(24px) saturate(180%);
         border-bottom: 1px solid var(--glass-border);
@@ -420,7 +442,7 @@ h2 {
         display: flex;
         animation: menuIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .nav-links a {
+    .nav-links > a {
         width: 100%;
         padding: 14px 4px;
         font-size: 17px;
@@ -428,14 +450,59 @@ h2 {
         color: var(--color-text-primary);
         border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     }
-    .nav-links a:last-child {
-        border-bottom: none;
+    .nav-links .nav-lang {
+        margin: 14px 0 4px;
+        align-self: stretch;
+    }
+
+    .nav-links .nav-lang a {
+        flex: 1;
+        text-align: center;
+        padding: 10px 12px;
+        font-size: 15px;
     }
 }
 
 @keyframes menuIn {
     from { opacity: 0; transform: translateY(-8px); }
     to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Language switcher ──────────────────────────────────── */
+.lang-switch {
+    display: inline-flex;
+    padding: 3px;
+    gap: 2px;
+    background: rgba(0, 0, 0, 0.04);
+    border-radius: var(--radius-pill);
+}
+
+.lang-switch a {
+    padding: 5px 12px;
+    border-radius: var(--radius-pill);
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--color-text-secondary);
+    transition: color var(--transition-fast), background var(--transition-fast);
+}
+
+.lang-switch a:hover {
+    color: var(--color-text-primary);
+}
+
+.lang-switch a.active {
+    background: #ffffff;
+    color: var(--color-text-primary);
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
+}
+
+.nav-lang {
+    margin-inline-start: 12px;
+}
+
+.footer-lang {
+    margin-bottom: 16px;
 }
 
 .mobile-menu-btn {
@@ -445,7 +512,7 @@ h2 {
     cursor: pointer;
     width: 44px;
     height: 44px;
-    margin-right: -10px;
+    margin-inline-end: -10px;
     position: relative;
     z-index: 1001;
 }
@@ -571,7 +638,7 @@ h2 {
 }
 
 .icon {
-    margin-left: 8px;
+    margin-inline-start: 8px;
     font-size: 0.9em;
 }
 
@@ -1197,6 +1264,16 @@ h2 {
     transform: translateX(4px);
 }
 
+[dir="rtl"] .inline-link:hover span {
+    transform: translateX(-4px);
+}
+
+/* Arrow/chevron glyphs point the other way in RTL */
+[dir="rtl"] .ad-cta-arrow,
+[dir="rtl"] .slider-arrow svg {
+    transform: scaleX(-1);
+}
+
 /* ═══════════════════════════════════════════════════════════
    Stats Banner
    ═══════════════════════════════════════════════════════════ */
@@ -1524,7 +1601,7 @@ h2 {
     position: absolute;
     top: 0;
     bottom: 0;
-    left: 24px;
+    inset-inline-start: 24px;
     width: 2px;
     background: rgba(0, 0, 0, 0.06);
 }
@@ -1609,7 +1686,7 @@ h2 {
 
 .faq-question {
     width: 100%;
-    text-align: left;
+    text-align: start;
     padding: 22px 28px;
     background: none;
     border: none;
@@ -1811,7 +1888,7 @@ h2 {
 .modal-close {
     position: absolute;
     top: 16px;
-    right: 16px;
+    inset-inline-end: 16px;
     background: rgba(0, 0, 0, 0.04);
     border: none;
     border-radius: 50%;
@@ -1843,7 +1920,7 @@ h2 {
 
 .demo-form .form-group {
     margin-bottom: 18px;
-    text-align: left;
+    text-align: start;
 }
 
 .demo-form label {
@@ -1878,6 +1955,12 @@ h2 {
     background-repeat: no-repeat;
     background-position: right 14px top 50%;
     background-size: 8px auto;
+}
+
+[dir="rtl"] .form-select {
+    padding-right: 14px;
+    padding-left: 36px;
+    background-position: left 14px top 50%;
 }
 
 .form-optional {
@@ -1919,6 +2002,14 @@ h2 {
     justify-content: center;
     margin: 0 auto 24px;
     box-shadow: 0 8px 24px rgba(48, 209, 88, 0.2);
+}
+
+@media (min-width: 1025px) {
+    [dir="rtl"] .flow-connector::after {
+        right: auto;
+        left: -8px;
+        transform: translateY(-50%) scaleX(-1);
+    }
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -2058,7 +2149,7 @@ h2 {
         column-gap: 16px;
         align-items: center;
         padding: 20px;
-        text-align: left;
+        text-align: start;
     }
 
     .stat-card .stat-icon {
@@ -2193,7 +2284,7 @@ h2 {
 
     /* Timeline */
     .timeline::before {
-        left: 20px;
+        inset-inline-start: 20px;
     }
 
     .timeline-marker {

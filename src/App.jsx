@@ -7,10 +7,10 @@ import Home from './pages/Home';
 import { ModalProvider } from './utils/ModalContext';
 import DemoModal from './components/DemoModal';
 
-// Single-page site: every path renders Home (vercel.json rewrites all routes to index.html)
-function App() {
+// Single-page site, one pre-rendered page per language (/ and /he/)
+function App({ lang = 'en' }) {
   return (
-    <LanguageProvider>
+    <LanguageProvider lang={lang}>
       <ModalProvider>
         <FloatingBlobs />
         <DemoModal />

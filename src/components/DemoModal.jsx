@@ -5,10 +5,10 @@ import { useLanguage } from '../utils/LanguageContext';
 // Values are sent to the CRM in English regardless of the visitor's language
 const BUDGET_OPTIONS = [
   { value: 'Not running ads yet', key: 'budget_1' },
-  { value: 'Under ₪10K', key: 'budget_2' },
-  { value: '₪10K – ₪30K', key: 'budget_3' },
-  { value: '₪30K – ₪100K', key: 'budget_4' },
-  { value: '₪100K+', key: 'budget_5' },
+  { value: 'Under $5K', key: 'budget_2' },
+  { value: '$5K – $10K', key: 'budget_3' },
+  { value: '$10K – $30K', key: 'budget_4' },
+  { value: '$30K+', key: 'budget_5' },
 ];
 
 const EMPTY_FORM = {

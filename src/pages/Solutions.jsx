@@ -28,7 +28,7 @@ export default function Solutions() {
             {PROBLEMS.map((item, i) => (
               <div key={item.num} className={`stat-card glass-panel fade-up stagger-${i + 1}`}>
                 <div className="stat-icon">{item.icon}</div>
-                <div className="stat-number">{t(item.num)}</div>
+                <div className="stat-number"><bdi>{t(item.num)}</bdi></div>
                 <p>{t(item.p)}</p>
               </div>
             ))}

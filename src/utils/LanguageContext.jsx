@@ -1,15 +1,18 @@
 import React, { createContext, useContext } from 'react';
 import { translations } from './translations';
 
-// The site is English-only. Copy still lives in translations.js so it stays in one place.
-const t = (key) => translations.en[key] ?? key;
+// The language is fixed per page (/ = English, /he/ = Hebrew), so it never changes at runtime
+const makeValue = (lang) => ({
+  lang,
+  t: (key) => translations[lang]?.[key] ?? translations.en[key] ?? key,
+});
 
-const LanguageContext = createContext({ t });
+const LanguageContext = createContext(makeValue('en'));
 
 export const useLanguage = () => useContext(LanguageContext);
 
-export const LanguageProvider = ({ children }) => (
-  <LanguageContext.Provider value={{ t }}>
+export const LanguageProvider = ({ lang = 'en', children }) => (
+  <LanguageContext.Provider value={makeValue(lang)}>
     {children}
   </LanguageContext.Provider>
 );
