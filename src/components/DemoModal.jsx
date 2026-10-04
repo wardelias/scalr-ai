@@ -17,12 +17,13 @@ const EMPTY_FORM = {
   phone: '',
   company: '',
   website: '',
-  ad_spend: ''
+  ad_spend: '',
+  company_url: '' // honeypot, hidden from people
 };
 
 export default function DemoModal() {
   const { isDemoModalOpen, closeDemoModal } = useModal();
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const [formData, setFormData] = useState(EMPTY_FORM);
   const [status, setStatus] = useState('idle'); // idle, submitting, success, error
 
@@ -48,16 +49,14 @@ export default function DemoModal() {
     e.preventDefault();
     setStatus('submitting');
     
-    // GHL Webhook URL provided by user
-    const webhookUrl = 'https://services.leadconnectorhq.com/hooks/5mx08gT5SXJptjzoBMQ9/webhook-trigger/36aa89fe-2406-45f1-8418-c7fa4c1203c5';
-
+    // api/lead.js forwards the lead to GoHighLevel and emails it
     try {
-      const response = await fetch(webhookUrl, {
+      const response = await fetch('/api/lead', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, language: lang }),
       });
 
       if (response.ok) {
@@ -90,6 +89,10 @@ export default function DemoModal() {
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="demo-form">
+            <div className="form-honeypot" aria-hidden="true">
+              <label htmlFor="company_url">Leave this field empty</label>
+              <input type="text" id="company_url" name="company_url" value={formData.company_url} onChange={handleChange} tabIndex={-1} autoComplete="off" />
+            </div>
             <div className="form-group">
               <label htmlFor="name">{t('form_name') || 'Name'}</label>
               <input type="text" id="name" name="name" required value={formData.name} onChange={handleChange} className="form-input" autoComplete="name" enterKeyHint="next" />

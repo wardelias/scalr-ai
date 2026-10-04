@@ -1963,6 +1963,16 @@ h2 {
     background-position: left 14px top 50%;
 }
 
+/* Spam trap: off-screen, so only bots fill it in */
+.form-honeypot {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
 .form-optional {
     font-weight: 400;
     color: var(--color-text-tertiary);
