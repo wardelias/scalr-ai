@@ -1,32 +1,24 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { LanguageProvider } from './utils/LanguageContext';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import LanguageModal from './components/LanguageModal';
 import FloatingBlobs from './components/FloatingBlobs';
 import Home from './pages/Home';
 import { ModalProvider } from './utils/ModalContext';
 import DemoModal from './components/DemoModal';
 
+// Single-page site: every path renders Home (vercel.json rewrites all routes to index.html)
 function App() {
   return (
     <LanguageProvider>
       <ModalProvider>
-        <BrowserRouter>
-          <FloatingBlobs />
-          <LanguageModal />
-          <DemoModal />
-          <Navbar />
-          <main>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              {/* All other sections are now on the Home page */}
-              <Route path="*" element={<Home />} />
-            </Routes>
-          </main>
-          <Footer />
-        </BrowserRouter>
+        <FloatingBlobs />
+        <DemoModal />
+        <Navbar />
+        <main id="main">
+          <Home />
+        </main>
+        <Footer />
       </ModalProvider>
     </LanguageProvider>
   );

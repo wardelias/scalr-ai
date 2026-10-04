@@ -32,7 +32,7 @@ export default function Pricing() {
                 <div className="pricing-header">
                   <h3>{t(`${plan.id}_h`)}</h3>
                   <p className="pricing-desc">{t(`${plan.id}_sub`)}</p>
-                  <div className="price" dir="ltr">
+                  <div className="price">
                     <span className="currency">₪</span>
                     <span className="amount">{plan.amount}</span>
                     <span className="period">{t('p_mo')}</span>

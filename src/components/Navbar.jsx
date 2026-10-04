@@ -1,25 +1,44 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useLanguage } from '../utils/LanguageContext';
 import { useModal } from '../utils/ModalContext';
 import Logo from './Logo';
 
+const LINKS = [
+  { id: 'method', label: 'nav_method' },
+  { id: 'services', label: 'nav_services' },
+  { id: 'results', label: 'nav_results' },
+  { id: 'process', label: 'nav_process' },
+];
+
 export default function Navbar() {
-  const { currentLang, setLanguage, t } = useLanguage();
+  const { t } = useLanguage();
   const { openDemoModal } = useModal();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const navRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleLangChange = (e) => {
-    setLanguage(e.target.value);
-  };
+  // Close the mobile menu on Escape or a tap outside the navbar
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+    const onKey = (e) => { if (e.key === 'Escape') setMobileMenuOpen(false); };
+    const onPointer = (e) => {
+      if (navRef.current && !navRef.current.contains(e.target)) setMobileMenuOpen(false);
+    };
+    document.addEventListener('keydown', onKey);
+    document.addEventListener('pointerdown', onPointer);
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.removeEventListener('pointerdown', onPointer);
+    };
+  }, [mobileMenuOpen]);
 
   const scrollToSection = (e, id) => {
     e.preventDefault();
@@ -36,7 +55,7 @@ export default function Navbar() {
         top: offsetPosition,
         behavior: 'smooth'
       });
-      
+
       // Update URL without jump
       window.history.pushState(null, '', `#${id}`);
     } else if (id === 'home') {
@@ -49,32 +68,16 @@ export default function Navbar() {
   };
 
   return (
-    <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`} id="navbar">
+    <nav className={`navbar ${isScrolled || mobileMenuOpen ? 'scrolled' : ''}`} id="navbar" ref={navRef} aria-label="Main">
       <div className="nav-container">
-        <a href="#home" onClick={(e) => scrollToSection(e, 'home')} style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+        <a href="#home" onClick={(e) => scrollToSection(e, 'home')} className="nav-logo" aria-label="Scalr — back to top">
           <Logo />
         </a>
-        
-        <div className={`nav-links${mobileMenuOpen ? ' open' : ''}`}>
-          <a href="#method" onClick={(e) => scrollToSection(e, 'method')}>{t('nav_method')}</a>
-          <a href="#services" onClick={(e) => scrollToSection(e, 'services')}>{t('nav_services')}</a>
-          <a href="#results" onClick={(e) => scrollToSection(e, 'results')}>{t('nav_results')}</a>
-          {/* <a href="#pricing" onClick={(e) => scrollToSection(e, 'pricing')}>{t('nav_pricing')}</a> */}
-          <a href="#process" onClick={(e) => scrollToSection(e, 'process')}>{t('nav_process')}</a>
 
-          {/* Navbar lang switcher */}
-          <div className="nav-lang-switcher">
-            <select
-              id="nav-lang-select"
-              className="nav-lang-select"
-              value={currentLang}
-              onChange={handleLangChange}
-            >
-              <option value="en">EN</option>
-              <option value="he">HE</option>
-              <option value="ar">AR</option>
-            </select>
-          </div>
+        <div className={`nav-links${mobileMenuOpen ? ' open' : ''}`} id="nav-links">
+          {LINKS.map((link) => (
+            <a key={link.id} href={`#${link.id}`} onClick={(e) => scrollToSection(e, link.id)}>{t(link.label)}</a>
+          ))}
         </div>
 
         <a href="#book" onClick={(e) => { e.preventDefault(); openDemoModal(); setMobileMenuOpen(false); }} className="btn-primary nav-cta">
@@ -82,8 +85,10 @@ export default function Navbar() {
         </a>
 
         <button
-          className="mobile-menu-btn"
-          aria-label="Menu"
+          className={`mobile-menu-btn${mobileMenuOpen ? ' open' : ''}`}
+          aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={mobileMenuOpen}
+          aria-controls="nav-links"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           <span></span>

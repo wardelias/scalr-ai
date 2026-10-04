@@ -28,7 +28,7 @@ export default function Solutions() {
             {PROBLEMS.map((item, i) => (
               <div key={item.num} className={`stat-card glass-panel fade-up stagger-${i + 1}`}>
                 <div className="stat-icon">{item.icon}</div>
-                <div className="stat-number" dir="auto">{t(item.num)}</div>
+                <div className="stat-number">{t(item.num)}</div>
                 <p>{t(item.p)}</p>
               </div>
             ))}
@@ -53,7 +53,7 @@ export default function Solutions() {
             </div>
             <div className="flow-connector fade-up stagger-2"></div>
             <div className="flow-step glass-panel fade-up stagger-3">
-              <div className="step-icon">🎬 <span className="floating-text" dir="ltr">{t('sol_floating_text')}</span></div>
+              <div className="step-icon">🎬 <span className="floating-text">{t('sol_floating_text')}</span></div>
               <h3>{t('sol_s2_h')}</h3>
               <p>{t('sol_s2_p')}</p>
             </div>

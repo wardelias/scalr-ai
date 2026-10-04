@@ -181,7 +181,12 @@ export default function ResultsDemo() {
                         <button
                             key={tab}
                             className={`tab-btn ${activeTab === tab ? 'active' : ''}`}
-                            onClick={() => setActiveTab(tab)}
+                            aria-pressed={activeTab === tab}
+                            onClick={(e) => {
+                                setActiveTab(tab);
+                                // On mobile the tab row scrolls sideways — bring the picked tab into view
+                                e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                            }}
                         >
                             {t(`res_t${i + 1}`)}
                         </button>
@@ -237,12 +242,14 @@ export default function ResultsDemo() {
                                 <div className="demo-mode-toggle">
                                     <button
                                         className={`mode-toggle-btn ${!isAfter ? 'active' : ''}`}
+                                        aria-pressed={!isAfter}
                                         onClick={() => selectMode('before')}
                                     >
                                         {t('res_before')}
                                     </button>
                                     <button
                                         className={`mode-toggle-btn ${isAfter ? 'active' : ''}`}
+                                        aria-pressed={isAfter}
                                         onClick={() => selectMode('after')}
                                     >
                                         {t('res_after')}
@@ -297,7 +304,7 @@ export default function ResultsDemo() {
 
                 <div className="demo-cta text-center fade-up stagger-3">
                     <a href="#book" className="inline-link" onClick={(e) => { e.preventDefault(); openDemoModal(); }}>
-                        <span>{t('res_cta')}</span> <span style={{ display: 'inline-block' }}>{t('demo_dir_arrow')}</span>
+                        <span>{t('res_cta')}</span> <span style={{ display: 'inline-block' }} aria-hidden="true">{t('demo_dir_arrow')}</span>
                     </a>
                 </div>
             </div>

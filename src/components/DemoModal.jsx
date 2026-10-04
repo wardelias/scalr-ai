@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useModal } from '../utils/ModalContext';
 import { useLanguage } from '../utils/LanguageContext';
 
@@ -22,9 +22,21 @@ const EMPTY_FORM = {
 
 export default function DemoModal() {
   const { isDemoModalOpen, closeDemoModal } = useModal();
-  const { t, currentLang } = useLanguage();
+  const { t } = useLanguage();
   const [formData, setFormData] = useState(EMPTY_FORM);
   const [status, setStatus] = useState('idle'); // idle, submitting, success, error
+
+  // Lock page scroll behind the modal and close it with Escape
+  useEffect(() => {
+    if (!isDemoModalOpen) return;
+    const onKey = (e) => { if (e.key === 'Escape') closeDemoModal(); };
+    document.body.classList.add('modal-open');
+    document.addEventListener('keydown', onKey);
+    return () => {
+      document.body.classList.remove('modal-open');
+      document.removeEventListener('keydown', onKey);
+    };
+  }, [isDemoModalOpen, closeDemoModal]);
 
   if (!isDemoModalOpen) return null;
 
@@ -66,9 +78,9 @@ export default function DemoModal() {
 
   return (
     <div className="modal-overlay" onClick={closeDemoModal}>
-      <div className="modal-content glass-panel" onClick={e => e.stopPropagation()} dir={currentLang === 'he' || currentLang === 'ar' ? 'rtl' : 'ltr'}>
-        <button className="modal-close" onClick={closeDemoModal}>&times;</button>
-        <h2 className="modal-title">{t('nav_book')}</h2>
+      <div className="modal-content glass-panel" onClick={e => e.stopPropagation()} role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <button className="modal-close" onClick={closeDemoModal} aria-label="Close">&times;</button>
+        <h2 className="modal-title" id="modal-title">{t('nav_book')}</h2>
         
         {status === 'success' ? (
           <div className="modal-success-message fade-up visible">
@@ -80,23 +92,23 @@ export default function DemoModal() {
           <form onSubmit={handleSubmit} className="demo-form">
             <div className="form-group">
               <label htmlFor="name">{t('form_name') || 'Name'}</label>
-              <input type="text" id="name" name="name" required value={formData.name} onChange={handleChange} className="form-input" />
+              <input type="text" id="name" name="name" required value={formData.name} onChange={handleChange} className="form-input" autoComplete="name" enterKeyHint="next" />
             </div>
             <div className="form-group">
               <label htmlFor="email">{t('form_email') || 'Email'}</label>
-              <input type="email" id="email" name="email" required value={formData.email} onChange={handleChange} className="form-input" />
+              <input type="email" id="email" name="email" required value={formData.email} onChange={handleChange} className="form-input" autoComplete="email" autoCapitalize="none" enterKeyHint="next" />
             </div>
             <div className="form-group">
               <label htmlFor="phone">{t('form_phone') || 'Phone Number'}</label>
-              <input type="tel" id="phone" name="phone" required value={formData.phone} onChange={handleChange} className="form-input" dir="ltr" />
+              <input type="tel" id="phone" name="phone" required value={formData.phone} onChange={handleChange} className="form-input" autoComplete="tel" enterKeyHint="next" />
             </div>
             <div className="form-group">
               <label htmlFor="company">{t('form_company') || 'Company Name'}</label>
-              <input type="text" id="company" name="company" required value={formData.company} onChange={handleChange} className="form-input" />
+              <input type="text" id="company" name="company" required value={formData.company} onChange={handleChange} className="form-input" autoComplete="organization" enterKeyHint="next" />
             </div>
             <div className="form-group">
               <label htmlFor="website">{t('form_website')} <span className="form-optional">{t('form_optional')}</span></label>
-              <input type="text" id="website" name="website" value={formData.website} onChange={handleChange} className="form-input" dir="ltr" placeholder="yourstore.com" />
+              <input type="text" id="website" name="website" value={formData.website} onChange={handleChange} className="form-input" placeholder="yourstore.com" inputMode="url" autoComplete="url" autoCapitalize="none" autoCorrect="off" spellCheck="false" enterKeyHint="next" />
             </div>
             <div className="form-group">
               <label htmlFor="ad_spend">{t('form_budget')}</label>

@@ -12,15 +12,14 @@ export default function Footer() {
           <div className="footer-copyright">
             <p>&copy; <span>{t('f_cpy')}</span></p>
           </div>
-          <div className="footer-links">
+          <nav className="footer-links" aria-label="Footer">
             <a href="#services">{t('nav_services')}</a>
             <a href="#results">{t('nav_results')}</a>
             <a href="#process">{t('nav_process')}</a>
             <a href="#book">{t('f_contact')}</a>
-          </div>
+          </nav>
           <div className="footer-social">
             <a href="https://wa.me/972544799652" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">WA</a>
-            <a href="#" aria-label="LinkedIn">IN</a>
             <a href={t('f_insta_link')} target="_blank" rel="noopener noreferrer" aria-label="Instagram">IG</a>
           </div>
         </div>

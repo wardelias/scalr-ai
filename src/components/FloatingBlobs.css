@@ -143,11 +143,12 @@
     }
 }
 
-/* ── Mobile: smaller blobs ─────────────────────────────── */
+/* ── Mobile: fewer, smaller blobs (big blurred layers are costly on phone GPUs) ── */
 @media (max-width: 768px) {
     .blob {
         filter: blur(50px);
     }
+    .blob-3, .blob-4, .blob-6 { display: none; }
     .blob-1 { width: 400px; height: 400px; }
     .blob-2 { width: 350px; height: 350px; }
     .blob-3 { width: 380px; height: 380px; }

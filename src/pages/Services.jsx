@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useLanguage } from '../utils/LanguageContext';
 import { useModal } from '../utils/ModalContext';
 import useScrollReveal from '../utils/useScrollReveal';
@@ -16,21 +16,32 @@ export default function Services() {
   const { t } = useLanguage();
   const { openDemoModal } = useModal();
   const revealRef = useScrollReveal();
+  const trackRef = useRef(null);
   const [active, setActive] = useState(0);
 
-  const prev = () => setActive(i => (i - 1 + SERVICES.length) % SERVICES.length);
-  const next = () => setActive(i => (i + 1) % SERVICES.length);
+  // On mobile the grid becomes a swipeable scroll-snap row; keep the dots in sync with it
+  const handleScroll = () => {
+    const track = trackRef.current;
+    if (!track) return;
+    const center = track.scrollLeft + track.clientWidth / 2;
+    let closest = 0;
+    let closestDist = Infinity;
+    Array.from(track.children).forEach((card, i) => {
+      const dist = Math.abs(card.offsetLeft + card.offsetWidth / 2 - center);
+      if (dist < closestDist) {
+        closestDist = dist;
+        closest = i;
+      }
+    });
+    setActive(closest);
+  };
 
-  const renderCard = (s) => (
-    <div className="case-card glass-panel">
-      <div className="case-icon">{s.icon}</div>
-      <h3>{t(s.h)}</h3>
-      <p>{t(s.p)}</p>
-      <a href="#book" className="learn-more" onClick={(e) => { e.preventDefault(); openDemoModal(); }}>
-        <span>{t('svc_cta')}</span> <span>{t('demo_dir_arrow')}</span>
-      </a>
-    </div>
-  );
+  const goTo = (i) => {
+    const track = trackRef.current;
+    const card = track?.children[(i + SERVICES.length) % SERVICES.length];
+    if (!card) return;
+    track.scrollTo({ left: card.offsetLeft - (track.clientWidth - card.offsetWidth) / 2, behavior: 'smooth' });
+  };
 
   return (
     <div id="services" ref={revealRef}>
@@ -41,44 +52,38 @@ export default function Services() {
             <h2>{t('svc_h2')}</h2>
           </div>
 
-          {/* ── Desktop grid ──────────────────────────────── */}
-          <div className="cases-grid-desktop">
-            {SERVICES.map((s, i) => (
-              <React.Fragment key={i}>{renderCard(s)}</React.Fragment>
+          <div className="cases-grid" ref={trackRef} onScroll={handleScroll}>
+            {SERVICES.map((s) => (
+              <article key={s.h} className="case-card glass-panel">
+                <div className="case-icon" aria-hidden="true">{s.icon}</div>
+                <h3>{t(s.h)}</h3>
+                <p>{t(s.p)}</p>
+                <a href="#book" className="learn-more" onClick={(e) => { e.preventDefault(); openDemoModal(); }}>
+                  <span>{t('svc_cta')}</span> <span aria-hidden="true">{t('demo_dir_arrow')}</span>
+                </a>
+              </article>
             ))}
           </div>
 
-          {/* ── Mobile slider ─────────────────────────────── */}
-          <div className="cases-slider">
-            <div className="cases-slider-track">
+          {/* ── Mobile carousel controls ──────────────────── */}
+          <div className="cases-slider-controls">
+            <button className="slider-arrow" onClick={() => goTo(active - 1)} aria-label="Previous service">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+            <div className="slider-dots">
               {SERVICES.map((s, i) => (
-                <div
-                  key={i}
-                  className={`cases-slide ${i === active ? 'active' : i === (active - 1 + SERVICES.length) % SERVICES.length ? 'prev' : 'next'}`}
-                >
-                  {renderCard(s)}
-                </div>
+                <button
+                  key={s.h}
+                  className={`slider-dot ${i === active ? 'active' : ''}`}
+                  onClick={() => goTo(i)}
+                  aria-label={`Go to slide ${i + 1}`}
+                  aria-current={i === active}
+                />
               ))}
             </div>
-
-            <div className="cases-slider-controls">
-              <button className="slider-arrow" onClick={prev} aria-label="Previous">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
-              </button>
-              <div className="slider-dots">
-                {SERVICES.map((_, i) => (
-                  <button
-                    key={i}
-                    className={`slider-dot ${i === active ? 'active' : ''}`}
-                    onClick={() => setActive(i)}
-                    aria-label={`Go to slide ${i + 1}`}
-                  />
-                ))}
-              </div>
-              <button className="slider-arrow" onClick={next} aria-label="Next">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
-              </button>
-            </div>
+            <button className="slider-arrow" onClick={() => goTo(active + 1)} aria-label="Next service">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
           </div>
 
         </div>
