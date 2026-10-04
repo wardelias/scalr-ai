@@ -13,9 +13,9 @@ export default function Footer() {
             <p>&copy; <span>{t('f_cpy')}</span></p>
           </div>
           <div className="footer-links">
-            <a href="#solutions">{t('nav_solutions')}</a>
-            <a href="#pricing">{t('nav_pricing')}</a>
-            <a href="#about">{t('nav_about')}</a>
+            <a href="#services">{t('nav_services')}</a>
+            <a href="#results">{t('nav_results')}</a>
+            <a href="#process">{t('nav_process')}</a>
             <a href="#book">{t('f_contact')}</a>
           </div>
           <div className="footer-social">

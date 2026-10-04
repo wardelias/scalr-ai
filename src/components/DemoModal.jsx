@@ -2,15 +2,28 @@ import React, { useState } from 'react';
 import { useModal } from '../utils/ModalContext';
 import { useLanguage } from '../utils/LanguageContext';
 
+// Values are sent to the CRM in English regardless of the visitor's language
+const BUDGET_OPTIONS = [
+  { value: 'Not running ads yet', key: 'budget_1' },
+  { value: 'Under ₪10K', key: 'budget_2' },
+  { value: '₪10K – ₪30K', key: 'budget_3' },
+  { value: '₪30K – ₪100K', key: 'budget_4' },
+  { value: '₪100K+', key: 'budget_5' },
+];
+
+const EMPTY_FORM = {
+  name: '',
+  email: '',
+  phone: '',
+  company: '',
+  website: '',
+  ad_spend: ''
+};
+
 export default function DemoModal() {
   const { isDemoModalOpen, closeDemoModal } = useModal();
   const { t, currentLang } = useLanguage();
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    company: ''
-  });
+  const [formData, setFormData] = useState(EMPTY_FORM);
   const [status, setStatus] = useState('idle'); // idle, submitting, success, error
 
   if (!isDemoModalOpen) return null;
@@ -40,7 +53,7 @@ export default function DemoModal() {
         setTimeout(() => {
           closeDemoModal();
           setStatus('idle');
-          setFormData({ name: '', email: '', phone: '', company: '' });
+          setFormData(EMPTY_FORM);
         }, 3000);
       } else {
         setStatus('error');
@@ -80,6 +93,19 @@ export default function DemoModal() {
             <div className="form-group">
               <label htmlFor="company">{t('form_company') || 'Company Name'}</label>
               <input type="text" id="company" name="company" required value={formData.company} onChange={handleChange} className="form-input" />
+            </div>
+            <div className="form-group">
+              <label htmlFor="website">{t('form_website')} <span className="form-optional">{t('form_optional')}</span></label>
+              <input type="text" id="website" name="website" value={formData.website} onChange={handleChange} className="form-input" dir="ltr" placeholder="yourstore.com" />
+            </div>
+            <div className="form-group">
+              <label htmlFor="ad_spend">{t('form_budget')}</label>
+              <select id="ad_spend" name="ad_spend" required value={formData.ad_spend} onChange={handleChange} className="form-input form-select">
+                <option value="" disabled>{t('form_select')}</option>
+                {BUDGET_OPTIONS.map((opt) => (
+                  <option key={opt.value} value={opt.value}>{t(opt.key)}</option>
+                ))}
+              </select>
             </div>
             
             {status === 'error' && (

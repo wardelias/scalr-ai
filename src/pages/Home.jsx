@@ -3,17 +3,18 @@ import { useLanguage } from '../utils/LanguageContext';
 import { useModal } from '../utils/ModalContext';
 // Link import removed for single-page layout
 import useScrollReveal from '../utils/useScrollReveal';
-import InteractiveDemo from '../components/InteractiveDemo';
 import Solutions from './Solutions';
-import UseCases from './UseCases';
+import Services from './Services';
+import ResultsDemo from '../components/ResultsDemo';
 import Pricing from './Pricing';
-import About from './About';
+import Process from './Process';
+
+const PLATFORMS = ['Meta', 'Instagram', 'TikTok', 'Google', 'Shopify', 'Klaviyo'];
 
 export default function Home() {
   const { t } = useLanguage();
   const { openDemoModal } = useModal();
   const heroRef = useScrollReveal();
-  const statsRef = useScrollReveal();
   const ctaRef = useScrollReveal();
 
   return (
@@ -37,13 +38,20 @@ export default function Home() {
 
           <div className="cta-group fade-up stagger-3">
             <a href="#book" onClick={(e) => { e.preventDefault(); openDemoModal(); }} className="btn-primary btn-large">{t('hero_cta_1')}</a>
-            <a href="#demo" className="btn-secondary btn-large">
+            <a href="#results" className="btn-secondary btn-large">
               <span>{t('hero_cta_2')}</span>
               <span className="icon" style={{ display: 'inline-block' }}>{t('hero_cta_icon')}</span>
             </a>
           </div>
 
-
+          <div className="platform-strip fade-up stagger-4">
+            <span className="platform-label">{t('hero_platforms')}</span>
+            <div className="platform-list" dir="ltr">
+              {PLATFORMS.map((name) => (
+                <span key={name} className="platform-chip">{name}</span>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
@@ -51,9 +59,10 @@ export default function Home() {
 
       {/* All sections integrated (they have their own revealRefs now) */}
       <Solutions />
-      <UseCases />
+      <Services />
+      <ResultsDemo />
       {/* <Pricing /> */}
-      <About />
+      <Process />
 
       {/* ── Final CTA ────────────────────────────────────── */}
       <section className="final-cta" id="book" ref={ctaRef}>

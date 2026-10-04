@@ -56,10 +56,11 @@ export default function Navbar() {
         </a>
         
         <div className={`nav-links${mobileMenuOpen ? ' open' : ''}`}>
-          <a href="#solutions" onClick={(e) => scrollToSection(e, 'solutions')}>{t('nav_solutions')}</a>
-          <a href="#use-cases" onClick={(e) => scrollToSection(e, 'use-cases')}>{t('nav_use_cases')}</a>
+          <a href="#method" onClick={(e) => scrollToSection(e, 'method')}>{t('nav_method')}</a>
+          <a href="#services" onClick={(e) => scrollToSection(e, 'services')}>{t('nav_services')}</a>
+          <a href="#results" onClick={(e) => scrollToSection(e, 'results')}>{t('nav_results')}</a>
           {/* <a href="#pricing" onClick={(e) => scrollToSection(e, 'pricing')}>{t('nav_pricing')}</a> */}
-          <a href="#about" onClick={(e) => scrollToSection(e, 'about')}>{t('nav_about')}</a>
+          <a href="#process" onClick={(e) => scrollToSection(e, 'process')}>{t('nav_process')}</a>
 
           {/* Navbar lang switcher */}
           <div className="nav-lang-switcher">

@@ -1,7 +1,13 @@
 import React from 'react';
 import { useLanguage } from '../utils/LanguageContext';
-import InteractiveDemo from '../components/InteractiveDemo';
 import useScrollReveal from '../utils/useScrollReveal';
+
+const PROBLEMS = [
+  { icon: '⏳', num: 'prob_1_num', p: 'prob_1' },
+  { icon: '🔍', num: 'prob_2_num', p: 'prob_2' },
+  { icon: '💸', num: 'prob_3_num', p: 'prob_3' },
+  { icon: '🤷', num: 'prob_4_num', p: 'prob_4' },
+];
 
 export default function Solutions() {
   const { t } = useLanguage();
@@ -19,31 +25,18 @@ export default function Solutions() {
           </div>
 
           <div className="stats-grid">
-            <div className="stat-card glass-panel fade-up stagger-1">
-              <div className="stat-icon">⏱</div>
-              <div className="stat-number">78%</div>
-              <p>{t('prob_1')}</p>
-            </div>
-            <div className="stat-card glass-panel fade-up stagger-2">
-              <div className="stat-icon">📵</div>
-              <div className="stat-number">{t('prob_2_num')}</div>
-              <p>{t('prob_2')}</p>
-            </div>
-            <div className="stat-card glass-panel fade-up stagger-3">
-              <div className="stat-icon">🔄</div>
-              <div className="stat-number">{t('prob_3_num')}</div>
-              <p>{t('prob_3')}</p>
-            </div>
-            <div className="stat-card glass-panel fade-up stagger-4">
-              <div className="stat-icon">🌙</div>
-              <div className="stat-number">{t('prob_4_num')}</div>
-              <p>{t('prob_4')}</p>
-            </div>
+            {PROBLEMS.map((item, i) => (
+              <div key={item.num} className={`stat-card glass-panel fade-up stagger-${i + 1}`}>
+                <div className="stat-icon">{item.icon}</div>
+                <div className="stat-number" dir="auto">{t(item.num)}</div>
+                <p>{t(item.p)}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="solution">
+      <section className="solution" id="method">
         <div className="orb orb-indigo orb-sol-1" aria-hidden="true" />
         <div className="container">
           <div className="section-header text-center fade-up">
@@ -54,26 +47,25 @@ export default function Solutions() {
 
           <div className="flow-diagram">
             <div className="flow-step glass-panel fade-up stagger-1">
-              <div className="step-icon">💬</div>
+              <div className="step-icon">🔎</div>
               <h3>{t('sol_s1_h')}</h3>
               <p>{t('sol_s1_p')}</p>
             </div>
             <div className="flow-connector fade-up stagger-2"></div>
             <div className="flow-step glass-panel fade-up stagger-3">
-              <div className="step-icon">🧠 <span className="floating-text" dir="rtl">{t('sol_floating_text')}</span></div>
+              <div className="step-icon">🎬 <span className="floating-text" dir="ltr">{t('sol_floating_text')}</span></div>
               <h3>{t('sol_s2_h')}</h3>
               <p>{t('sol_s2_p')}</p>
             </div>
             <div className="flow-connector fade-up stagger-4"></div>
             <div className="flow-step glass-panel fade-up stagger-5">
-              <div className="step-icon">📅</div>
+              <div className="step-icon">📈</div>
               <h3>{t('sol_s3_h')}</h3>
               <p>{t('sol_s3_p')}</p>
             </div>
           </div>
         </div>
       </section>
-      <InteractiveDemo />
     </div>
   );
 }
